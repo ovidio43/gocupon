@@ -9,9 +9,43 @@ h1{
 	font-size: 22px;
 	font-family: 'Open Sans', sans-serif;
 	font-weight: 700;
+	margin-bottom: 20px;
+	color: #000;
+}
+#sidebar{
+	display: none;
+}
+.container{
+	color: #000;
 }
 .header{
 	background-image: url(../img/bg-black.jpg);
+	.container{
+		position: relative;
+	}
+	.bg-icon{
+		background-image: url(../img/header-icons.png);
+		background-position: -66px 0;
+		width: 60px;
+		height: 68px;
+		display: block;
+		position: absolute;
+		top: 35px;
+		&.icon-search{
+			right: 20px;
+		}
+		&.icon-carts{
+			right: 100px;
+		}
+		&:hover{
+			background-position: 0 0;
+		}
+		.glyphicon{
+		    color: #fff;
+		    font-size: 25px;
+		    margin: 17px;			
+		}
+	}
 }
 .navbar-brand{
 	background-image: url(../img/logo-gocupon.jpg);
@@ -23,6 +57,39 @@ h1{
 .wrap-navbar{
 	background-color: #de331c;
 }
+.wrap-search-box{
+	background-color: #f4f4f4;
+	-webkit-box-shadow: 0px 5px 20px 0px rgba(50, 50, 50, 0.75);
+	-moz-box-shadow:    0px 5px 20px 0px rgba(50, 50, 50, 0.75);
+	box-shadow:         0px 5px 20px 0px rgba(50, 50, 50, 0.75);
+	padding: 10px 0;
+	#searchform{
+		float: left;
+		width: 70%;
+		position: relative;
+		.screen-reader-text{
+			display: none;
+		}
+		#s{
+			width: 100%;
+		}
+		#searchsubmit{
+			background-color: #231f20;
+			color: #fff;
+			font-size: 12px;
+			text-transform: uppercase;
+			font-family: 'Dosis', sans-serif;
+			font-weight: 600;
+			position: absolute;
+			left: 100%;
+			border: 0;
+			padding: 6px 20px;
+		}
+	}
+	.dropdown_product_cat{
+		float: right;
+	}
+}
 .owl-wrapper-outer{
 		-webkit-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.75);
 		-moz-box-shadow:    0px 0px 15px 0px rgba(0, 0, 0, 0.75);
@@ -32,9 +99,11 @@ h1{
 			position: absolute;
 			top: 0;
 			right: 20px;
-			width: 40%;
+			width: 330px;
 			height: 100%;
-			background-color: rgba(0, 0, 0, 0.5)!important;
+			padding: 20px;
+			text-align: left;
+			background-color: rgba(0, 0, 0, 0.8)!important;
 		}
 
 }
@@ -44,18 +113,21 @@ h1{
 		box-shadow:         0px 0px 15px 0px rgba(0, 0, 0, 0.75);
 		background-image: url(../img/bg-black.jpg);
 }
+.woocommerce ul.products li.product, .woocommerce-page ul.products li.product{
+	width: 30.8%!important;
+}
 div.wpb_slider_area .item{
 	margin: 0!important;
 }
 .products{
 	.jckqvBtn{
-	    bottom: 124px;
+	    bottom: 50px;
 	    font-size: 14px;
 	    line-height: 1em;
 	    position: absolute;
-	    right: 0;
+	    right: 10px;
 	    text-transform: uppercase;
-	}	
+	}
 }
 .nav-menu{
 	list-style: none;
@@ -68,15 +140,75 @@ div.wpb_slider_area .item{
 		color: #fff;
 		text-transform: uppercase;
 		display: inline-block;
-		padding: 5px 10px;
+		padding: 10px 20px;
 		font-family: 'Dosis', sans-serif;
 		font-weight: 600;
 		font-size: 16px;
 		&:hover{
 			background-color: #ab2716;
 			text-decoration: none;
+			color: #fff;
 		}
 	}
+}
+.woocommerce-breadcrumb{
+	margin: 30px 0 0!important;
+	a{
+		color: #de331c!important;
+		font-weight: 700;
+	}
+}
+.entry-summary{
+	color: #000;
+}
+.breadcrumbs{
+	padding: 40px 0 0 0 ;
+	.removed_link{
+		color: #de331c;
+	}
+}
+.offers{
+	.products{
+		.product{
+			padding: 0 0 40px 0!important;
+		}
+	}
+}
+.offers, .archive{
+	margin: 50px 0 0;
+	.add_to_cart_button{
+		display: none!important;
+	}
+	.star-rating{
+		display: none!important;
+	}	
+	.products{
+		h3{
+			font-size: 24px!important;
+			font-weight: 800;
+			color: #fff;
+			position: absolute;
+			top: 10px;
+			right: 10px;
+		}
+
+		.price{
+			position: absolute;
+			right: 10px;
+			bottom: 90px;
+			.amount{
+				font-size: 16px!important;
+			}
+			
+			del{
+				display: block;
+			}
+			ins{
+				font-weight: 800;
+				display: block;
+			}
+		}
+	}	
 }
 .next-offers{
 	margin: 0 0 30px 0;
@@ -103,11 +235,78 @@ div.wpb_slider_area .item{
 		}
 	}
 }
-
+.feature-prod{
+	margin-top: 50px;
+	.wpb_area_title{
+		display: none;
+	}
+	.wpb_feature_pro_sli{
+		background-image: url(../img/bar-color.jpg);
+		background-repeat: repeat-x;
+		background-position: bottom;
+		background-color: #231f20;		
+		padding: 0 0 7px 0;
+	}
+	div.grid_no_animation figcaption h3.pro_title{
+		font-size: 30px;
+		color: #fff;
+		font-weight: 800;
+		line-height: 1.2em;
+	}
+}
+.wrap-newsletter{
+	margin: 0 0 30px 0;
+}
+.main-title{
+	background-image: url(../img/bar-color.jpg);
+	background-repeat: repeat-x;
+	background-position: bottom;
+	padding: 0 0 15px 0;
+	font-size: 37px;
+	color: #000;
+	font-weight: 800;
+}
+.newsletter{
+	background-image: url(../img/bar-color.jpg);
+	background-repeat: repeat-x;
+	background-position: bottom;
+	background-color: #231f20;
+    float: left;
+    padding: 15px 25px 25px
+    width: 100%;	
+	-webkit-box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.75);
+	-moz-box-shadow:    0px 0px 5px 0px rgba(50, 50, 50, 0.75);
+	box-shadow:         0px 0px 5px 0px rgba(50, 50, 50, 0.75);    
+	h2{
+		font-size: 24px;
+		color: #fff;
+		 float: left;
+	}
+	.widget_wysija_cont{
+	    float: right;
+	    text-align: right;
+	    width: 50%;
+	}
+	.wysija-paragraph{
+		display: inline-block;
+	}
+	.wysija-submit{
+		background-color: #de331c;
+		font-size: 12px;
+		font-family: 'Dosis', sans-serif;
+		font-weight: 600;	
+		display: inline-block!important;	
+		border:0;
+		padding: 5px 10px;
+		text-transform: uppercase;
+		color: #fff;
+	}
+}
 .footer{
 	background-image: url(../img/bg-black.jpg);
 	overflow: hidden;
 	color: #fff;
+	width: 100%;
 	a{
 		color: #fff;
 	}
@@ -134,14 +333,45 @@ div.wpb_slider_area .item{
 	}
 	.copy{
 		float: left;
+		margin: 40px 0;
+		color:#fff;
 	}
 	.social-wrap{
 		float: right;
 	}
 }
-
-
-
-
+.social-nav{
+	margin: 0;
+	padding:25px 0 ;
+	li{
+		display: inline-block;
+		margin: 0 5px 0 0;
+	}
+	a{
+		background-image: url(../img/social-icons.png);
+		width: 36px;
+		height: 54px;
+		display: block;
+		text-indent: -99999px;
+		&:hover{
+			opacity: 0.7;
+		}
+	}
+	.facebook{
+		a{
+			background-position: 0 0;
+		}
+	}
+	.twitter{
+		a{
+			background-position:-84px 0 ;
+		}
+	}
+	.google{
+		a{
+			background-position: -44px 0;
+		}
+	}
+}
 
 

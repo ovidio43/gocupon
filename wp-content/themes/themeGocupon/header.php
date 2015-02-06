@@ -11,7 +11,7 @@
         <title><?php wp_title( '|', true, 'right' ); ?></title>
         <meta name="description" content="<?php bloginfo( 'description' ); ?>">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/bootstrap.css">
+        <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/bootstrap.css?v=<?php echo date('his');?>">
         <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/main.css?v=<?php echo date('his');?>">
         <script src="<?php echo get_template_directory_uri(); ?>/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
         <?php wp_head(); ?>
@@ -22,6 +22,8 @@
           <div class="navbar-header">
             <a class="navbar-brand" href="#"></a>
           </div>
+          <span class="bg-icon icon-search"><span aria-hidden="true" class="glyphicon glyphicon-search"></span></span>
+          <a href="/carrito/" class="bg-icon icon-carts"><span aria-hidden="true" class="glyphicon glyphicon-shopping-cart"></span></a>
         </div>
       </header>
       <nav class="wrap-navbar" role="navigation">
@@ -38,4 +40,11 @@
           <?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => 'nav-menu' ) ); ?>
           </div><!--/.navbar-collapse -->
         </div>
-      </nav>        
+      </nav>  
+      <div class="wrap-search-box">
+        <div class="container">
+          <?php if ( is_active_sidebar( 'search_bar' ) ) : ?>
+              <?php dynamic_sidebar( 'search_bar' ); ?>
+          <?php endif; ?>          
+        </div>
+      </div>      

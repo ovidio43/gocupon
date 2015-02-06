@@ -1,7 +1,7 @@
 <?php get_header();?>
 <section class="feature-prod">
 	<div class="container">
-	<?php echo do_shortcode('[wpb-feature-product title="Feature Products"] '); ?>
+	<?php echo do_shortcode('[wpb-feature-product] '); ?>
 	</div>
 </section>
 <section class="offers">
@@ -14,7 +14,7 @@
 </section>
 <section class="next-offers">
 	<div class="container">
-	<h1>Proxims Ofertas</h1>
+	<h1>Proximas Ofertas</h1>
 	<?php
             $args = array(
                 'post_type' => 'proximas-ofertas'
@@ -32,6 +32,15 @@
 		    </div>
 		<?php endif; ?>	
 		<?php wp_reset_query(); ?>	
+	</div>
+</section>
+<section class="wrap-newsletter">
+	<div class="container">
+		<div class="newsletter">
+			<?php if ( is_active_sidebar( 'newsletter' ) ) : ?>
+			  <?php dynamic_sidebar( 'newsletter' ); ?>
+			<?php endif; ?> 			
+		</div>
 	</div>
 </section>
 <?php get_footer();?>
