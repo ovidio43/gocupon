@@ -12,11 +12,20 @@ h1{
 	margin-bottom: 20px;
 	color: #000;
 }
+h2{
+	font-family: 'Open Sans', sans-serif;
+}
 #sidebar{
 	display: none;
 }
 .container{
 	color: #000;
+}
+.divide{
+	width: 100%;
+	float: left;
+	clear: both;
+	height: 5px;
 }
 .header{
 	background-image: url(../img/bg-black.jpg);
@@ -57,15 +66,36 @@ h1{
 .wrap-navbar{
 	background-color: #de331c;
 }
+.btn-custom{
+    background-color: #231f20;
+    color: #fff;
+    font-family: "Dosis",sans-serif;
+
+    text-transform: uppercase;
+	
+	&.btn{
+		-webkit-border-radius: 0px;
+		-moz-border-radius: 0px;
+		border-radius: 0px; 
+		font-size: 12px;
+		font-weight: 600;
+		padding: 7px 15px;
+		line-height: 1em;
+	}  
+}
 .wrap-search-box{
 	background-color: #f4f4f4;
 	-webkit-box-shadow: 0px 5px 20px 0px rgba(50, 50, 50, 0.75);
 	-moz-box-shadow:    0px 5px 20px 0px rgba(50, 50, 50, 0.75);
 	box-shadow:         0px 5px 20px 0px rgba(50, 50, 50, 0.75);
 	padding: 10px 0;
+	.btn-group{
+		float: right;
+		margin: 0 0 0 17px;
+	}
 	#searchform{
 		float: left;
-		width: 70%;
+		width: 72%;
 		position: relative;
 		.screen-reader-text{
 			display: none;
@@ -81,7 +111,7 @@ h1{
 			font-family: 'Dosis', sans-serif;
 			font-weight: 600;
 			position: absolute;
-			left: 100%;
+			right: -94px;
 			border: 0;
 			padding: 6px 20px;
 		}
@@ -90,22 +120,57 @@ h1{
 		float: right;
 	}
 }
-.owl-wrapper-outer{
-		-webkit-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.75);
-		-moz-box-shadow:    0px 0px 15px 0px rgba(0, 0, 0, 0.75);
-		box-shadow:         0px 0px 15px 0px rgba(0, 0, 0, 0.75);
-		position: relative;
-		figcaption{
-			position: absolute;
-			top: 0;
-			right: 20px;
-			width: 330px;
-			height: 100%;
-			padding: 20px;
-			text-align: left;
-			background-color: rgba(0, 0, 0, 0.8)!important;
+.feature-prod{
+	.bx-wrapper .bx-viewport{
+		left: 0;
+	}
+	.bxslider{
+		margin: 0;
+		padding: 0;
+		li img{
+			width: 100%;
 		}
+	}
+	.caption-product{
+		position: absolute;
+		top: 0;
+		right: 20px;
+		width: 330px;
+		height: 100%;
+		padding: 20px;
+		text-align: left;
+		background-color: rgba(0, 0, 0, 0.8);
+		color: #fff;
+		font-size: 12px;
 
+	}
+	.product-rating{
+		height: 25px!important;
+		.star-rating{
+			float: right!important;
+			height: 1.2em!important;
+			color: yellow;
+		}	
+	}	
+	h1{
+		font-size: 30px;
+		color: #fff;
+		font-weight: 800;
+	}
+	.show-offer{
+		background-color: #de331c;
+		border: 3px solid #bf2712;
+		color: #fff;
+		font-size: 18px;
+		text-transform: uppercase;
+		display: block;
+		line-height: 1em;
+		padding: 10px 0;
+		width: 100%;
+		font-family: 'Dosis', sans-serif;
+		font-weight: 600;
+		text-align: center;
+	}
 }
 .woocommerce ul.products li.product, .woocommerce-page ul.products li.product{
 		-webkit-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.75);
@@ -168,10 +233,49 @@ div.wpb_slider_area .item{
 	}
 }
 .offers{
-	.products{
-		.product{
-			padding: 0 0 40px 0!important;
+	.item-offer{
+		margin: 0 0 20px 0;
+		img{
+			width: 100%;
+			height: auto;
 		}
+	}
+	.wrap-offer{
+		position: relative;
+	}
+	.float-caption{
+		position: absolute;
+		height: 100%;
+		width: 210px;
+		top: 0;
+		right: 0;
+	}
+	.caption{
+		background-color: #231f20;
+		color: #fff;
+		font-size: 12px;
+		padding: 10px;
+		height: 50px;
+	}
+	h2{
+		font-size: 24px;
+		font-weight: 800;
+		top: 10px;
+		right: 10px;
+		position: absolute;
+		color: #fff;
+	}
+	.show-offer{
+		position: absolute;
+		bottom: 10px;
+		right: 10px;
+		font-size: 12px;
+		font-family: 'Dosis', sans-serif;
+		font-weight: 600;
+		color: #fff;
+		background-color: #de331c;
+		padding: 5px 15px;
+		text-transform: uppercase;
 	}
 }
 .offers, .archive{

@@ -55,3 +55,17 @@ function the_breadcrumb() {
 		}
 	}
 } 
+function themeCatStevens_sizes() {
+    add_image_size('smallimg-prod', 360, 406, true);
+    add_image_size('bigimg-prod', 750, 406, true);
+    add_image_size('slideimg-prod', 1000, 470, true);
+}
+
+add_action('init', 'themeCatStevens_sizes', 0);
+
+function get_excerpt($count){
+  $excerpt = get_the_excerpt();
+  $excerpt = strip_tags($excerpt);
+  $excerpt = substr($excerpt, 0, $count);
+  return $excerpt;
+}
