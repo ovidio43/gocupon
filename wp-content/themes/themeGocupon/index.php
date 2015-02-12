@@ -18,17 +18,27 @@
 					<img src="<?php echo $med_image_url[0];?>">
 					<div class="caption-product">
 					 	<h1><?php the_title(); ?></h1>
-					 	<?php the_excerpt();?>
-					 	<div class="price">
+					 	<div class="description"><?php the_excerpt();?></div>
+					 	<div class="row price">
 							<?php
 							$regular = get_post_meta( get_the_ID(), '_regular_price', true);
 							$sales = get_post_meta( get_the_ID(), '_sale_price', true);
+							$newprice = (($regular - $sales) *100) /($regular);
+							if(($newprice<0)||($newprice==$regular)){
+								$newprice =0;
+							}							
 							 if($sales==""){
 							 	$sales=0;
-							  } ?>	
-							<span class="regular"> En Comercio <?php echo $regular; ?></span>
-							<span class="porcent">Ahorro <?php $newprice = (($regular - $sales) *100) /($regular); echo round($newprice,2)."%";?></span>
-							<span class="sale">Gocupon<?php echo $sales;?></span>
+							  } ?>
+							<div class="col-md-4">
+								<span class="regular"> En Comercio <br><span><?php echo "$".$regular; ?></span></span>
+							</div>
+							<div class="col-md-4">
+								<span class="porcent">Ahorro <br><span><?php echo round($newprice,0)."%";?></span></span>
+							</div>
+							<div class="col-md-4">
+								<span class="sale">Gocupon <br><span><?php echo "$".$sales;?></span></span>
+							</div>														
 					 	</div>
 						<div class="product-rating">
 					       <?php $string = WC_Product::get_rating_html( 5); echo $string;?>
@@ -73,20 +83,27 @@
 				<div class="<?=$cols?> item-offer">
 					<div class="wrap-offer">
 						<?php echo get_the_post_thumbnail( get_the_ID(),$size); ?> 
+						<span class="porcent"><span><?php echo round($porcent,0)."%";?></span></span>
+						<span><?php echo do_shortcode('[expires]');?></span>
 						<div class="float-caption">
 							<h2><?php the_title();?></h2>
 						 	<div class="price">
-<?php
-$regular = get_post_meta( get_the_ID(), '_regular_price', true);
-$sales = get_post_meta( get_the_ID(), '_sale_price', true);
- if($sales==""){
- 	$sales=0;
-  } ?>	
-<span class="price"><span class="amount"> En Comercio <?php echo $regular; ?></span></span>
-<span class="price"><span class="amount">Ahorras <?php $newprice = $regular - $sales; echo $newprice;?></span></span>
-<span class="price"><span class="amount">Gocupon<?php echo $sales;?></span></span>
+								<?php
+								$regular = get_post_meta( get_the_ID(), '_regular_price', true);
+								$sales = get_post_meta( get_the_ID(), '_sale_price', true);
+								$newprice = $regular - $sales;
+								$porcent = (($regular - $sales) *100) /($regular);								
+								if(($newprice<0)||($newprice==$regular)){
+									$newprice =0;
+								}
+								 if($sales==""){
+								 	$sales=0;
+								  } ?>	
+								<span class="amount regular"> En Comercio: <span><?php echo "$".$regular; ?></span></span>
+								<span class="amount discount">Ahorras: <span><?php echo "$".$newprice;?></span></span>
+								<span class="amount sales">Gocupon: <span><?php echo "$".$sales;?></span></span>
+						 	</div>
 
-						 	</div>							
 							<a href="<?php echo get_the_permalink(get_the_ID()); ?>" class="show-offer">Ver Oferta</a>
 						</div>						
 					</div>
