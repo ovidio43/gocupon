@@ -50,12 +50,12 @@
                 $args1=array(
                     //'include'=> array(12,30)
                     );
-                $terms = get_terms('product_cat',$args1 );?>
+                $terms = get_terms('comercio',$args1 );?>
                 <div class="btn-group" role="group" aria-label="">
                     <button aria-expanded="false" data-toggle="dropdown" class="btn btn-custom dropdown-toggle" type="button" id="btnGroupDrop2">Comercio&nbsp;&nbsp;<span class="caret"></span></button>
                     <ul class="dropdown-menu" role="menu" aria-labelledby="btnGroupDrop2">
                       <?php foreach ($terms as $term) {
-                          $term_link = get_term_link( $term, 'product_cat' );
+                          $term_link = get_term_link( $term, 'comercio' );
                           if( is_wp_error( $term_link ) )
                               continue;
                           ?>

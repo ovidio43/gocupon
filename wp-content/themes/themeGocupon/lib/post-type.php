@@ -29,10 +29,10 @@ function custom_post_type_init() {
 
 add_action('init', 'custom_post_type_init');
 // create taxonomy
-add_action( 'wp_loaded', 'create_my_taxonomies', 0 );
+add_action( 'init', 'create_my_taxonomies', 0 );
 function create_my_taxonomies() {
     $taxonomies = array(
-        //array("name_tax" => "faq-category", "related_tax" => "faq", "name" => "FAQ Category", "add_new_item" => "Add New FAQ Category", "new_item_name" => "New FAQ Type Category"),
+        array("name_tax" => "comercio", "related_tax" => "product", "name" => "Comercio", "add_new_item" => "Agregar Comercio", "new_item_name" => "Nuevo Comercio")
     );
     foreach ($taxonomies as $tax) {
         register_taxonomy(
@@ -46,9 +46,7 @@ function create_my_taxonomies() {
                 ),
                 'show_ui' => true,
                 'show_tagcloud' => false,
-                'hierarchical' => true,
-                'query_var' => true,
-                'public'=> true
+                'hierarchical' => true
             )
         );
     }
