@@ -81,5 +81,3 @@ function custom_wp_title($title, $sep) {
         $title = "$title $sep " . sprintf(__('Page %s', 'moe.'), max($paged, $page));
     return $title;
 }
-
-add_filter('wp_title', 'custom_wp_title', 10, 2);

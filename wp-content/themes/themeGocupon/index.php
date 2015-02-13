@@ -42,7 +42,22 @@
 					 	</div>
 						<div class="product-rating">
 					       <?php $string = WC_Product::get_rating_html( 5); echo $string;?>
-					    </div>             	
+					    </div> 
+						<span class="expirate-date">
+							<?php 
+							$date_format = __( 'M j, Y G:i' );
+							$expiration_date = get_post_meta( get_the_ID(), '_expiration_date', true);
+
+							$dt_end = new DateTime(date_i18n( $date_format, strtotime( $expiration_date ) ));
+							$remain = $dt_end->diff(new DateTime());
+							?>
+							<div class="col-md-3">
+								<span class="days"> Dias <br><span><?php echo $remain->d ?></span></span>
+							</div>
+							<div class="col-md-3">
+								<span class="hours">Horas <br><span><?php echo $remain->h;?></span></span>
+							</div>							
+						</span>					                	
 					 	<a href="<?php echo get_the_permalink(get_the_ID()); ?>" class="show-offer">Ver Oferta</a>
 					</div>
 				</li>
@@ -84,7 +99,16 @@
 					<div class="wrap-offer">
 						<?php echo get_the_post_thumbnail( get_the_ID(),$size); ?> 
 						<span class="porcent"><span><?php echo round($porcent,0)."%";?></span></span>
-						<span><?php echo do_shortcode('[expires]');?></span>
+						<span class="expirate-date">
+							<?php 
+							$date_format = __( 'M j, Y G:i' );
+							$expiration_date = get_post_meta( get_the_ID(), '_expiration_date', true);
+
+							$dt_end = new DateTime(date_i18n( $date_format, strtotime( $expiration_date ) ));
+							$remain = $dt_end->diff(new DateTime());
+							echo $remain->d . ' dias y ' . $remain->h . ' horas';
+							?>
+						</span>
 						<div class="float-caption">
 							<h2><?php the_title();?></h2>
 						 	<div class="price">
