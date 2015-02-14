@@ -11,8 +11,9 @@
         <title><?php wp_title( '|', true, 'right' ); ?></title>
         <meta name="description" content="<?php bloginfo( 'description' ); ?>">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/bootstrap.min.css">
-        <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/main.css">
+        <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/bootstrap.css?v=<?php echo date('his');?>">
+        <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/js/jquery.bxslider/jquery.bxslider.css?v=<?php echo date('his');?>">
+        <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/main.css?v=<?php echo date('his');?>">
         <script src="<?php echo get_template_directory_uri(); ?>/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
         <?php wp_head(); ?>
     </head>
@@ -22,6 +23,8 @@
           <div class="navbar-header">
             <a class="navbar-brand" href="#"></a>
           </div>
+          <span class="bg-icon icon-search"><span aria-hidden="true" class="glyphicon glyphicon-search"></span></span>
+          <a href="/cart/" class="bg-icon icon-carts"><span aria-hidden="true" class="glyphicon glyphicon-shopping-cart"></span></a>
         </div>
       </header>
       <nav class="wrap-navbar" role="navigation">
@@ -38,4 +41,51 @@
           <?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => 'nav-menu' ) ); ?>
           </div><!--/.navbar-collapse -->
         </div>
-      </nav>        
+      </nav>  
+      <div class="wrap-search-box">
+        <div class="container">
+          <?php if ( is_active_sidebar( 'search_bar' ) ) : ?>
+              <?php dynamic_sidebar( 'search_bar' ); ?>
+                <?php
+                $args1=array(
+                    //'include'=> array(12,30)
+                    );
+                $terms = get_terms('comercio',$args1 );?>
+                <div class="btn-group" role="group" aria-label="">
+                    <button aria-expanded="false" data-toggle="dropdown" class="btn btn-custom dropdown-toggle" type="button" id="btnGroupDrop2">Comercio&nbsp;&nbsp;<span class="caret"></span></button>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="btnGroupDrop2">
+                      <?php foreach ($terms as $term) {
+                          $term_link = get_term_link( $term, 'comercio' );
+                          if( is_wp_error( $term_link ) )
+                              continue;
+                          ?>
+                          <li><a href="<?php echo $term_link?>"><?php echo $term->name?></a></li>
+                      <?php } ?>
+                    </ul>
+                </div>                
+                <?php
+                $args1=array(
+                    //'include'=> array(12,30)
+                    );
+                $terms = get_terms('product_cat',$args1 );?>
+                <div class="btn-group" role="group" aria-label="">
+                    <button aria-expanded="false" data-toggle="dropdown" class="btn btn-custom dropdown-toggle" type="button" id="btnGroupDrop1">Categoría&nbsp;&nbsp;<span class="caret"></span></button>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="btnGroupDrop1">
+                      <?php foreach ($terms as $term) {
+                          $term_link = get_term_link( $term, 'product_cat' );
+                          if( is_wp_error($term_link ))
+                              continue;
+                          ?>
+                          <li><a href="<?php echo $term_link?>"><?php echo $term->name?></a></li>
+                      <?php } ?>
+                    </ul>
+                </div>
+              
+          <?php endif; ?>  
+
+
+      
+
+            
+        </div>
+      </div>      

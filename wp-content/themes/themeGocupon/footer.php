@@ -1,10 +1,19 @@
-      <footer>
-        <p>&copy; Company 2014</p>
+      <footer class="footer">
+        <div class="container">
+            <nav>
+                <?php wp_nav_menu(array('theme_location' => 'footer', 'menu_class' => 'navbar-nav', 'container' => false, 'items_wrap' => '<ul class="footer-nav">%3$s</ul>'));?>
+            </nav>
+            <div>
+                <div class="copy">© 2015 - Todos los derechos reservados</div>
+                <div class="social-wrap"><?php wp_nav_menu(array('theme_location' => 'social_nav', 'menu_class' => 'navbar-nav', 'container' => false, 'items_wrap' => '<ul class="social-nav">%3$s</ul>'));?></div>
+            </div>
+        </div>
       </footer>
     </div>
     	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.1.min.js"><\/script>')</script>
-
+        <script src="<?php echo get_template_directory_uri(); ?>/js/vendor/bootstrap.min.js"></script>
+        <script src="<?php echo get_template_directory_uri(); ?>/js/jquery.bxslider/jquery.bxslider.min.js"></script>
         <script src="<?php echo get_template_directory_uri(); ?>/js/plugins.js"></script>
         <script src="<?php echo get_template_directory_uri(); ?>/js/main.js"></script>
 		<?php wp_footer(); ?>

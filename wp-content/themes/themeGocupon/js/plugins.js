@@ -19,6 +19,12 @@
             console[method] = noop;
         }
     }
+    $('.bxslider').bxSlider({
+      mode: 'fade',
+      pager: false,
+      auto: true,
+      controls: false
+    });    
 }());
 
 // Place any jQuery/helper plugins in here.
