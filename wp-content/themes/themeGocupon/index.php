@@ -97,7 +97,16 @@
 				?>
 				<div class="<?=$cols?> item-offer">
 					<div class="wrap-offer">
-						<?php echo get_the_post_thumbnail( get_the_ID(),$size); ?> 
+						<?php echo get_the_post_thumbnail( get_the_ID(),$size); 
+								$regular = get_post_meta( get_the_ID(), '_regular_price', true);
+								$sales = get_post_meta( get_the_ID(), '_sale_price', true);
+								$newprice = $regular - $sales;
+								if($regular > 0){
+									$porcent = (($regular - $sales) *100) /($regular);
+								}else{
+									$porcent = 0;
+								}									
+						?> 
 						<span class="porcent"><span><?php echo round($porcent,0)."%";?></span></span>
 						<span class="expirate-date">
 							<?php 
@@ -112,11 +121,7 @@
 						<div class="float-caption">
 							<h2><?php the_title();?></h2>
 						 	<div class="price">
-								<?php
-								$regular = get_post_meta( get_the_ID(), '_regular_price', true);
-								$sales = get_post_meta( get_the_ID(), '_sale_price', true);
-								$newprice = $regular - $sales;
-								$porcent = (($regular - $sales) *100) /($regular);								
+								<?php							
 								if(($newprice<0)||($newprice==$regular)){
 									$newprice =0;
 								}
