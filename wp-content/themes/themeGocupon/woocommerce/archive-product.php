@@ -7,6 +7,7 @@ if(get_query_var('comercio')!=""){
 	$taxname ="comercio";
 	$current_tax =get_query_var('comercio');
 }
+$term =	$wp_query->queried_object;
 global $paged;
 if (get_query_var('paged'))
     $paged = get_query_var('paged');
@@ -18,14 +19,16 @@ else
 ?>
 <section class="offers">
 	<div class="container">
-		<h1 class="main-title">Productos Gocupon <?php if($current_tax!="") echo "->".$current_tax;?></h1>
+		<div class="breadcrumbs">
+			<?php the_breadcrumb();?>
+		</div>	
+		
 		<?php
 		if($current_tax!=""){
 			$taxarray = array( array( 'taxonomy' => $taxname,'field' => 'slug','terms'=>$current_tax));
 		}else{
 			$taxarray = array();
 		}
-
             $args = array(
                 'post_type' => 'product',
                 'posts_per_page' => 8,
@@ -35,9 +38,40 @@ else
             $the_query = new WP_Query($args);
 		?>
 		<?php if ($the_query->have_posts()) : ?>
+			<?php if($taxname=="product_cat"){?>
+			<h1 class="main-title">Productos Gocupon</h1>
 			<h2 class="subtitle"><?php echo $the_query->found_posts;?> PRODUCTOS PARA ELIGIR</h2>
+			<?php }else{
+				$queried_object = get_queried_object();
+				$term_id = $queried_object->term_id;
+				?>
+			<div class="row comercio-head">
+				<div class="col-md-1">
+				<?php $thumb = wp_get_attachment_image_src(get_field('logotipo_de_comercio', 'comercio_'.$term_id), 'thumbnail' );?>
+					<?php if($thumb['0']!=""){?>
+					<img src="<?php echo $thumb['0'];?>">
+					<?php }?>
+				</div>
+				<div class="col-md-6">
+					<h1><?php echo $term->name;?></h1>
+					<?php 
+						echo get_field('descripcion_comercio', 'comercio_'.$term_id);
+					?>
+				</div>
+				<div class="col-md-5">
+					<?php 
+					$location = get_field('ubicacion_de_comercio', 'comercio_'.$term_id);
+					if( !empty($location) ):
+					?>
+					<div class="acf-map">
+						<div class="marker" data-lat="<?php echo $location['lat']; ?>" data-lng="<?php echo $location['lng']; ?>"></div>
+					</div>
+				<?php endif; ?>
+				</div>
+			</div>
+			<h2 class="subtitle"><?php echo $the_query->found_posts;?> CUPONES EN CARTELERA</h2>
+			<?php }?>
 			<div class="row">
-			
 			<?php $c=0;while ($the_query->have_posts()) : $the_query->the_post(); 
 				$c++;
 				if($c%3==0){

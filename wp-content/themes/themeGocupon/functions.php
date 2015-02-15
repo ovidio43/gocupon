@@ -38,12 +38,16 @@ function wc_loop_shop_columns( $number_columns ) {
 } 
 
 function the_breadcrumb() {
+	if(get_query_var('product_cat')!=""){
+		$current_tax =get_query_var('product_cat');
+	}
+	if(get_query_var('comercio')!=""){
+		$current_tax =get_query_var('comercio');
+	}	
 	if (!is_home()) {
-		echo '<span class="removed_link" title="&#039;;
-		echo get_option(&#039;home&#039;);
-	        echo &#039;">';
+		echo '<span class="removed_link" title="&#039;'. get_option('&#039;home&#039;').'&#039;">';
 		bloginfo('name');
-		echo "</span> » ";
+		echo "</span> » ".$current_tax;
 		if (is_category() || is_single()) {
 			the_category('title_li=');
 			if (is_single()) {
