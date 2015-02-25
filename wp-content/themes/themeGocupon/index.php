@@ -24,12 +24,12 @@
 							$regular = get_post_meta( get_the_ID(), '_regular_price', true);
 							$sales = get_post_meta( get_the_ID(), '_sale_price', true);
 							$newprice = (($regular - $sales) *100) /($regular);
-							if(($newprice<0)||($newprice==$regular)){
-								$newprice =0;
-							}							
-							 if($sales==""){
-							 	$sales=0;
-							  } ?>
+							if($sales>0){
+								$newprice =(($regular - $sales) *100) /($regular);
+							}else{
+								$newprice = 0;
+							}						
+							 ?>
 							<div class="col-md-4">
 								<span class="regular"> En Comercio <br><span><?php echo "$".$regular; ?></span></span>
 							</div>
@@ -45,7 +45,8 @@
 					    </div> 
 						<span class="expirate-date">
 							<?php 
-							$date_format = __( 'M j, Y G:i' );
+							$date_format = __( 'Y-m-d H:i:s' );
+							//I used "Y-m-d H-i-s" instead of "Y-m-d H:i:s"
 							$expiration_date = get_post_meta( get_the_ID(), '_expiration_date', true);
 
 							$dt_end = new DateTime(date_i18n( $date_format, strtotime( $expiration_date ) ));
@@ -101,7 +102,7 @@
 								$regular = get_post_meta( get_the_ID(), '_regular_price', true);
 								$sales = get_post_meta( get_the_ID(), '_sale_price', true);
 								$newprice = $regular - $sales;
-								if($regular > 0){
+								if($sales > 0){
 									$porcent = (($regular - $sales) *100) /($regular);
 								}else{
 									$porcent = 0;
@@ -110,7 +111,7 @@
 						<span class="porcent"><span><?php echo round($porcent,0)."%";?></span></span>
 						<span class="expirate-date">
 							<?php 
-							$date_format = __( 'M j, Y G:i' );
+							$date_format = __( 'Y-m-d H:i:s' );
 							$expiration_date = get_post_meta( get_the_ID(), '_expiration_date', true);
 
 							$dt_end = new DateTime(date_i18n( $date_format, strtotime( $expiration_date ) ));
@@ -178,5 +179,22 @@
 			<?php endif; ?> 			
 		</div>
 	</div>
+</section>
+<section class="list_clients">
+	<div class="container">
+		<?php
+		$rows = get_field('lista_clientes', 'option');
+		if($rows)
+		{
+			echo '<ul class="bxslider_carrousel">';
+			foreach($rows as $row)
+			{
+				$image_url = wp_get_attachment_image_src( $row['logo_cliente'], 'thumbnail');?>
+				<li><img src="<?php echo $image_url[0];?>" /></li>
+			<?php }
+			echo '</ul>';
+		}		
+		?>	
+	</div>	
 </section>
 <?php get_footer();?>

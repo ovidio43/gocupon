@@ -98,7 +98,7 @@ else
 						<?php }?>
 						<span class="expirate-date">
 							<?php 
-							$date_format = __( 'M j, Y G:i' );
+							$date_format = __( 'Y-m-d H:i:s' );
 							$expiration_date = get_post_meta( get_the_ID(), '_expiration_date', true);
 
 							$dt_end = new DateTime(date_i18n( $date_format, strtotime( $expiration_date ) ));

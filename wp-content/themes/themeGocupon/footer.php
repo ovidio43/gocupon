@@ -4,7 +4,7 @@
                 <?php wp_nav_menu(array('theme_location' => 'footer', 'menu_class' => 'navbar-nav', 'container' => false, 'items_wrap' => '<ul class="footer-nav">%3$s</ul>'));?>
             </nav>
             <div>
-                <div class="copy">© 2015 - Todos los derechos reservados</div>
+                <div class="copy"><span class="footer-logo"></span> © 2015 - Todos los derechos reservados</div>
                 <div class="social-wrap"><?php wp_nav_menu(array('theme_location' => 'social_nav', 'menu_class' => 'navbar-nav', 'container' => false, 'items_wrap' => '<ul class="social-nav">%3$s</ul>'));?></div>
             </div>
         </div>
