@@ -24,7 +24,12 @@
       pager: false,
       auto: true,
       controls: false
-    });  
+    }); 
+    $('.side-images').bxSlider({
+      pager: false,
+      controls: true
+    });      
+    
     $('.bxslider_carrousel').bxSlider({
       minSlides: 3,
       maxSlides: 6,

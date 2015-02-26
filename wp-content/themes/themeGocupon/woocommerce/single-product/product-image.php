@@ -14,10 +14,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 global $post, $woocommerce, $product;
 
 ?>
+<h1 itemprop="name" class="main-title2"><?php the_title(); ?></h1>
 <div class="images">
 
 	<?php
-		if ( has_post_thumbnail() ) {
+		/*if ( has_post_thumbnail() ) {
 
 			$image_title = esc_attr( get_the_title( get_post_thumbnail_id() ) );
 			$image_link  = wp_get_attachment_url( get_post_thumbnail_id() );
@@ -39,7 +40,7 @@ global $post, $woocommerce, $product;
 
 			echo apply_filters( 'woocommerce_single_product_image_html', sprintf( '<img src="%s" alt="%s" />', wc_placeholder_img_src(), __( 'Placeholder', 'woocommerce' ) ), $post->ID );
 
-		}
+		}*/
 	?>
 
 	<?php do_action( 'woocommerce_product_thumbnails' ); ?>
