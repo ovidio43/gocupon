@@ -18,7 +18,36 @@ $heading = esc_html( apply_filters( 'woocommerce_product_description_heading', _
 ?>
 
 <?php if ( $heading ): ?>
-  <h2><?php echo $heading; ?></h2>
+  <!--h2><?php echo $heading; ?></h2-->
 <?php endif; ?>
+<div class="row">
+	<div class="col-md-8">
+		<?php the_content(); ?>
+	</div>
+	<div class="col-md-4">
+		<?php the_field('terminos_y_condiciones'); ?>
+	</div>
+</div>
+<?php $desc =get_field('descripcion_comercio'); if(!empty($desc)){?>
+<div class="row">
+	<div class="col-md-8">
+		<div class="col-md-8">
+			<?php 
+			$location = get_field('ubicacion_de_comercio');
+			if( !empty($location) ):
+			?>
+			<div class="acf-map">
+				<div class="marker" data-lat="<?php echo $location['lat']; ?>" data-lng="<?php echo $location['lng']; ?>"></div>
+			</div>
+			<?php endif; ?>
+		</div>
+		<div class="col-md-4">
+			<?php echo "<br><br>".$location['address']; ?>
+		</div>
 
-<?php the_content(); ?>
+	</div>
+	<div class="col-md-4">
+		<?php the_field('descripcion_comercio'); ?>
+	</div>	
+</div>
+<?php }?>

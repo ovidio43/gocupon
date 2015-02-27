@@ -42,7 +42,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	?>
 	
 	<div class="summary entry-summary">
-
+	<div class="product-rating" style="width: 100%; float: left; padding: 0px 0px 10px; text-align: left;">
+       <?php $string = WC_Product::get_rating_html( 5); echo $string;?>
+    </div>
 		<?php
 			/**
 			 * woocommerce_single_product_summary hook
@@ -55,7 +57,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 			 * @hooked woocommerce_template_single_meta - 40
 			 * @hooked woocommerce_template_single_sharing - 50
 			 */
+
 			do_action( 'woocommerce_single_product_summary' );
+
 		?>
 
 	</div><!-- .summary -->

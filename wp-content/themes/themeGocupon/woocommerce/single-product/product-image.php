@@ -14,7 +14,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 global $post, $woocommerce, $product;
 
 ?>
-<h1 itemprop="name" class="main-title2"><?php the_title(); ?></h1>
+<h1 itemprop="name" class="main-title2">
+	<?php $thumb = wp_get_attachment_image_src(get_field('logotipo_de_comercio'), 'thumbnail' );?>
+		<?php if($thumb['0']!=""){?>
+		<img src="<?php echo $thumb['0'];?>">
+	<?php }?>
+<?php the_title(); ?></h1>
 <div class="images">
 
 	<?php
