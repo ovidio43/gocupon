@@ -246,8 +246,70 @@ h2{
 .woocommerce-breadcrumb{
 	display: none;
 }
+.single_add_to_cart_button{
+	background-color: #de331c!important;
+}
+.woocommerce #respond input#submit, .woocommerce a.button, .woocommerce button.button, .woocommerce input.button{
+	border-radius: 0;
+	padding: 0.918em 2em;
+	border:3px solid #b4220e;
+	text-transform: uppercase;
+}
+.woocommerce div.product form.cart .button{
+	float: none!important;
+	font-size: 20px;
+}
+#reply-title{
+	display: none;
+}
+.woocommerce div.product form.cart{
+	text-align: right!important;
+	position: relative;
+	.expirate-date{
+		position: absolute;
+		left: 0;
+		top: 0;
+		.bg-black{
+			background-color: #000;
+			font-size: 30px;
+			font-weight: 800;
+			color: #fff;
+			padding: 0 5px;
+		}
+	}
+	.wrap-expiration{
+		display: inline-block;
+		text-align: center;
+	}
+}
+
+.single .summary{
+	.amount{
+	    border-bottom: 1px solid #ccc;
+	    padding: 10px 0;
+	    text-align: right;	
+	    font-size: 22px;
+	    width: 100%;
+	    display: block;		
+		&.regular{
+			font-weight: normal;
+		}
+		&.discount{
+			font-weight: normal;
+		}
+		&.sales{
+			font-weight: 800;
+		}
+	}
+}
 .breadcrumb{
 	background-color:transparent;
+}
+.content-column{
+	padding: 0 15px;
+}
+.aditional-content{
+	padding: 20px 0;
 }
 div.wpb_slider_area .item{
 	margin: 0!important;

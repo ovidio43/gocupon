@@ -32,6 +32,16 @@ if ( ! $product->is_purchasable() ) {
 	<?php do_action( 'woocommerce_before_add_to_cart_form' ); ?>
 
 	<form class="cart" method="post" enctype='multipart/form-data'>
+		<span class="expirate-date">
+			<?php 
+			$date_format = __( 'Y-m-d H:i:s' );
+			$expiration_date = get_post_meta( get_the_ID(), '_expiration_date', true);
+
+			$dt_end = new DateTime(date_i18n( $date_format, strtotime( $expiration_date ) ));
+			$remain = $dt_end->diff(new DateTime());
+			echo  '<div class="wrap-expiration"> dias<br> <span class="bg-black day">'.$remain->d.'</span></div>' . ' <div class="wrap-expiration">horas <br><span class="bg-black hour">' .$remain->h.'</span></div>';
+			?>
+		</span>		
 	 	<?php do_action( 'woocommerce_before_add_to_cart_button' ); ?>
 
 	 	<?php

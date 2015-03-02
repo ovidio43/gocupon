@@ -29,7 +29,7 @@ $heading = esc_html( apply_filters( 'woocommerce_product_description_heading', _
 	</div>
 </div>
 <?php $desc =get_field('descripcion_comercio'); if(!empty($desc)){?>
-<div class="row">
+<div class="row aditional-content">
 	<div class="col-md-8">
 		<div class="col-md-8">
 			<?php 
@@ -42,7 +42,7 @@ $heading = esc_html( apply_filters( 'woocommerce_product_description_heading', _
 			<?php endif; ?>
 		</div>
 		<div class="col-md-4">
-			<?php echo "<br><br>".$location['address']; ?>
+			<?php echo $location['address']; ?>
 		</div>
 
 	</div>
