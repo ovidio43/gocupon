@@ -26,14 +26,18 @@ else
 		<?php
 		if($current_tax!=""){
 			$taxarray = array( array( 'taxonomy' => $taxname,'field' => 'slug','terms'=>$current_tax));
+			$metaquery = array();
 		}else{
 			$taxarray = array();
+			$metaquery = array(	array('key' => 'producto_de_comercio',	'value' => '1','compare' => '!=')); 
+
 		}
             $args = array(
                 'post_type' => 'product',
                 'posts_per_page' => 8,
                 'tax_query' => $taxarray,
-                'paged' => $paged
+                'paged' => $paged ,	
+                'meta_query' => $metaquery
             );
             $the_query = new WP_Query($args);
 		?>
@@ -41,6 +45,7 @@ else
 			<?php if($taxname=="comercio"){				
 				$queried_object = get_queried_object();
 				$term_id = $queried_object->term_id;
+				
 				?>
 				<div class="row comercio-head">
 					<div class="col-md-1">
@@ -79,6 +84,7 @@ else
 				}else{
 					$divide ="";
 				}
+				
 				?>
 				<div class=" col-md-4 item-offer">
 					<div class="wrap-offer">
@@ -95,17 +101,21 @@ else
 						?> 
 						<?php if($taxname=="comercio"){?>
 							<span class="porcent"><span><?php echo round($porcent,0)."%";?></span></span>
-						<?php }?>
-						<span class="expirate-date">
-							<?php 
-							$date_format = __( 'Y-m-d H:i:s' );
-							$expiration_date = get_post_meta( get_the_ID(), '_expiration_date', true);
+							<span class="expirate-date">
+								<?php 
+								$date_format = __( 'Y-m-d H:i:s' );
+								$expiration_date = get_post_meta( get_the_ID(), '_expiration_date', true);
 
-							$dt_end = new DateTime(date_i18n( $date_format, strtotime( $expiration_date ) ));
-							$remain = $dt_end->diff(new DateTime());
-							echo $remain->d . ' dias y ' . $remain->h . ' horas';
-							?>
-						</span>
+								$dt_end = new DateTime(date_i18n( $date_format, strtotime( $expiration_date ) ));
+								$remain = $dt_end->diff(new DateTime());
+								echo $remain->d . ' dias y ' . $remain->h . ' horas';
+								?>
+							</span>
+						<?php }else{?>
+							<span class="expirate-date">
+							<?php global $product; echo $product->stock; ?> Restantes
+							</span>
+						<?php }?>
 						<div class="float-caption">
 							<h2><?php the_title();	?></h2>
 						 	<div class="price">

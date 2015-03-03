@@ -60,7 +60,13 @@ if ( ! $product->is_purchasable() ) {
 
 		<?php do_action( 'woocommerce_after_add_to_cart_button' ); ?>
 	</form>
+	<div class="wrap-share" style="text-align:right;padding:0 0 10px 0;">
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
 
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-539f76f8264f1eac" async="async"></script>
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<div class="addthis_sharing_toolbox"></div>		
+	</div>
 	<?php do_action( 'woocommerce_after_add_to_cart_form' ); ?>
 
 <?php endif; ?>

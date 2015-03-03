@@ -76,7 +76,14 @@
 		<?php
             $args = array(
                 'post_type' => 'product',
-                'posts_per_page' => 8
+                'posts_per_page' => 8,
+				'meta_query'		=> array(
+					array(
+						'key' => 'producto_de_comercio',
+						'value' => '1',
+						'compare' => '=='
+					)
+				)                
             );
             $the_query = new WP_Query($args);
 		?>
@@ -89,6 +96,7 @@
 				}else{
 					$divide ="";
 				}
+
 				if(($c==2)||($c==3)||($c==6)||($c==7)){
 					$size ="bigimg-prod";
 					$cols = "col-md-8";
