@@ -41,7 +41,8 @@
 							</div>														
 					 	</div>
 						<div class="product-rating">
-					       <?php $string = WC_Product::get_rating_html( 5); echo $string;?>
+					       <?php //$string = WC_Product::get_rating_html( 5); echo $string;?>
+					       <?php echo do_shortcode('[ratings id="'.get_the_ID().'"]');?>
 					    </div> 
 						<span class="expirate-date">
 							<?php 

@@ -136,7 +136,18 @@ h2{
 		li img{
 			width: 100%;
 		}
+		li .product-rating{
+			img{
+				width: auto;
+				display: inline;
+			}
+			.text-rating, em{
+				display: none;
+			}
+		}
+
 	}
+
 	.caption-product{
 		position: absolute;
 		top: 0;
@@ -255,6 +266,15 @@ h2{
 	border:3px solid #b4220e;
 	text-transform: uppercase;
 }
+.woocommerce div.product form.cart{
+	position: relative;
+	margin-top: 20px;
+}
+.woocommerce div.product form.cart div.quantity{
+	position: absolute;
+	left: 0px;
+	top: -52px;
+}
 .woocommerce div.product form.cart .button{
 	float: none!important;
 	font-size: 20px;
@@ -288,7 +308,7 @@ h2{
 	    border-bottom: 1px solid #ccc;
 	    padding: 10px 0;
 	    text-align: right;	
-	    font-size: 22px;
+	    font-size: 12px;
 	    width: 100%;
 	    display: block;		
 		&.regular{
@@ -301,6 +321,29 @@ h2{
 			font-weight: 800;
 		}
 	}
+	&.is-comercio{
+		.amount{
+			font-size: 22px;
+		}
+		.product-rating{
+			display: block;
+		}
+	}
+	.product-rating{
+		width: 100%; 
+		float: left; 
+		padding: 0px 0px 10px; 
+		text-align: left;
+		color: #ffc323;
+		display: none;
+	}
+
+}
+.comment-form-author{
+	display: none;
+}
+.comment-form-email{
+	display: none;
 }
 .breadcrumb{
 	background-color:transparent;

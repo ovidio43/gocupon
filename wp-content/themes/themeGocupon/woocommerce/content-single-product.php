@@ -40,11 +40,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 		 */
 		do_action( 'woocommerce_before_single_product_summary' );
 	?>
-	
-	<div class="summary entry-summary">
-	<div class="product-rating" style="width: 100%; float: left; padding: 0px 0px 10px; text-align: left;">
-       <?php $string = WC_Product::get_rating_html( 5); echo $string;?>
+	<?php if(get_field('producto_de_comercio')){ $comercio="is-comercio";}?>
+	<div class="summary entry-summary <?php echo $comercio;?>">
+	<?php if(get_field('producto_de_comercio')){?>
+	<div class="product-rating" >
+	<?php if(function_exists('the_ratings')) { the_ratings(); } ?>
+       <?php //$string = WC_Product::get_rating_html( 5); echo $string;?>
     </div>
+    <?php }?>
 		<?php
 			/**
 			 * woocommerce_single_product_summary hook
