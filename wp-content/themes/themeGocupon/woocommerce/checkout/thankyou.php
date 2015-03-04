@@ -34,8 +34,9 @@ if ( $order ) : ?>
 	<?php else : ?>
 
 		<p><?php echo apply_filters( 'woocommerce_thankyou_order_received_text', __( 'Thank you. Your order has been received.', 'woocommerce' ), $order ); ?></p>
-
+		<p><b>Tu estado de Orden es: </b> <?php echo $order->post_status;?></p>
 		<ul class="order_details">
+		
 			<li class="order">
 				<?php _e( 'Order Number:', 'woocommerce' ); ?>
 				<strong><?php echo $order->get_order_number(); ?></strong>
