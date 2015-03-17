@@ -69,7 +69,7 @@ global $product, $post;
 
 		<?php do_action( 'woocommerce_before_add_to_cart_button' ); ?>
 
-		<div class="single_variation_wrap" style="display:none;">
+		<div class="single_variation_wrap">
 			<?php do_action( 'woocommerce_before_single_variation' ); ?>
 
 			<div class="single_variation"></div>
@@ -95,5 +95,15 @@ global $product, $post;
 	<?php endif; ?>
 
 </form>
-
+<script>
+    $(window).load(function(){
+        $(".single_variation_wrap").show();
+        $(".single_add_to_cart_button").click(function(){
+            if($("#pa_size").val() == ''){
+                alert('Please select size');
+                return false;
+            }
+        });
+    });
+</script>
 <?php do_action( 'woocommerce_after_add_to_cart_form' ); ?>
