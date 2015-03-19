@@ -108,14 +108,14 @@
 				<div class="<?=$cols?> item-offer">
 					<div class="wrap-offer">
 						<?php echo get_the_post_thumbnail( get_the_ID(),$size); 
-								$regular = get_post_meta( get_the_ID(), '_regular_price', true);
-								$sales = get_post_meta( get_the_ID(), '_sale_price', true);
-								$newprice = $regular - $sales;
-								if($sales > 0){
-									$porcent = (($regular - $sales) *100) /($regular);
-								}else{
-									$porcent = 0;
-								}									
+							$regular = get_field('precio_normal_aux');
+							$sales = get_field('precio_rebajado_aux');
+							$newprice = $regular - $sales;
+							if($regular > 0){
+								$porcent = (($regular - $sales) *100) /($regular);
+							}else{
+								$porcent = 0;
+							}								
 						?> 
 						<span class="porcent"><span><?php echo round($porcent,0)."%";?></span></span>
 						<span class="expirate-date">
@@ -130,17 +130,10 @@
 						</span>
 						<div class="float-caption">
 							<h2><?php the_title();?></h2>
-						 	<div class="price">
-								<?php							
-								if(($newprice<0)||($newprice==$regular)){
-									$newprice =0;
-								}
-								 if($sales==""){
-								 	$sales=0;
-								  } ?>	
-								<span class="amount regular"> En Comercio: <span><?php echo "$".$regular; ?></span></span>
-								<span class="amount discount">Ahorras: <span><?php echo "$".$newprice;?></span></span>
-								<span class="amount sales">Gocupon: <span><?php echo "$".$sales;?></span></span>
+						 	<div class="price">	
+								<span class="amount regular"> Precio en Comercio: <span><?php echo "$".get_field('precio_normal_aux'); ?></span></span>
+								<span class="amount discount">Promocion: <span><?php echo "%".round($porcent,0);?></span></span>
+								<span class="amount sales">Precio en Gocupon: <span><?php echo "$".get_field('precio_rebajado_aux');?></span></span>
 						 	</div>
 
 							<a href="<?php echo get_the_permalink(get_the_ID()); ?>" class="show-offer">Ver Oferta</a>

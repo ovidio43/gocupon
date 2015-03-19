@@ -40,7 +40,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		 */
 		do_action( 'woocommerce_before_single_product_summary' );
 	?>
-	<?php if(get_field('producto_de_comercio')){ $comercio="is-comercio";}?>
+	<?php if(get_field('producto_de_comercio')){ $comercio="is-comercio";}else{ $comercio = "no-comercio";}?>
 	<div class="summary entry-summary <?php echo $comercio;?>">
 	<?php if(get_field('producto_de_comercio')){?>
 	<div class="product-rating" >
