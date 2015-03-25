@@ -21,7 +21,7 @@
       <header class="header">
         <div class="container">
           <div class="navbar-header">
-            <a class="navbar-brand" href="#"></a>
+            <a class="navbar-brand" href="<?php echo esc_url(home_url('/')); ?>"></a>
           </div>
           <span class="bg-icon icon-search"><span aria-hidden="true" class="glyphicon glyphicon-search"></span></span>
           <a href="/cart/" class="bg-icon icon-carts"><span aria-hidden="true" class="glyphicon glyphicon-shopping-cart"></span></a>

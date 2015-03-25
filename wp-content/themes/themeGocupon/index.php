@@ -1,4 +1,17 @@
 <?php get_header();?>
+<a href="#modal-content" class="main-modal"></a>
+<div id="modal-content" class="modal-content" style="display:none;">
+	<img src="<?php echo get_template_directory_uri(); ?>/img/modal-banner.jpg">
+	<div class="teaser-content">
+		<h1>Bienvenido a Gocupon</h1>
+		<p>Sed ut luctus quam. Etiam at ultricies purus. Donec eleifend arcu et purus ultrices hendrerit. Pellentesque at nulla sit amet orci placerat finibus. Phasellus tortor est, lobortis et cursus eu.</p>
+		<form action="" name="" id="">
+			<input type="text" value="" placeholder="Correo electrónico"/>
+			<input type="submit" value="INGRESAR"/>
+		</form>
+	</div>
+</div>	
+
 <section class="feature-prod">
 	<div class="container woocommerce">
 	<?php //echo do_shortcode('[wpb-feature-product] '); ?>
@@ -21,23 +34,23 @@
 					 	<div class="description"><?php the_excerpt();?></div>
 					 	<div class="row price">
 							<?php
-							$regular = get_post_meta( get_the_ID(), '_regular_price', true);
-							$sales = get_post_meta( get_the_ID(), '_sale_price', true);
-							$newprice = (($regular - $sales) *100) /($regular);
-							if($sales>0){
-								$newprice =(($regular - $sales) *100) /($regular);
+							$regular = get_field('precio_normal_aux');
+							$sales = get_field('precio_rebajado_aux');
+							$newprice = $regular - $sales;
+							if($regular > 0){
+								$porcent = (($regular - $sales) *100) /($regular);
 							}else{
-								$newprice = 0;
+								$porcent = 0;
 							}						
 							 ?>
 							<div class="col-md-4">
-								<span class="regular"> En Comercio <br><span><?php echo "$".$regular; ?></span></span>
+								<span class="regular"> En Comercio <br><span><?php echo "$".get_field('precio_normal_aux'); ?></span></span>
 							</div>
 							<div class="col-md-4">
-								<span class="porcent">Ahorro <br><span><?php echo round($newprice,0)."%";?></span></span>
+								<span class="porcent">Ahorro <br><span><?php echo round($porcent,0)."%";?></span></span>
 							</div>
 							<div class="col-md-4">
-								<span class="sale">Gocupon <br><span><?php echo "$".$sales;?></span></span>
+								<span class="sale">Gocupon <br><span><?php echo "$".get_field('precio_rebajado_aux');?></span></span>
 							</div>														
 					 	</div>
 						<div class="product-rating">
@@ -200,3 +213,8 @@
 	</div>	
 </section>
 <?php get_footer();?>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $(".main-modal").fancybox().trigger('click');
+    });
+</script>
