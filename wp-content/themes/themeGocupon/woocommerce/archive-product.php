@@ -89,14 +89,14 @@ else
 				<div class=" col-md-4 item-offer">
 					<div class="wrap-offer">
 						<?php echo get_the_post_thumbnail( get_the_ID(),'smallimg-prod'); 
-								$regular = get_post_meta( get_the_ID(), '_regular_price', true);
-								$sales = get_post_meta( get_the_ID(), '_sale_price', true);
-								$newprice = $regular - $sales;
-								if($regular > 0){
-									$porcent = (($regular - $sales) *100) /($regular);
-								}else{
-									$porcent = 0;
-								}
+							$regular = get_field('precio_normal_aux',get_the_ID());
+							$sales = get_field('precio_rebajado_aux',get_the_ID());
+							$newprice = $regular - $sales;
+							if($regular > 0){
+								$porcent = (($regular - $sales) *100) /($regular);
+							}else{
+								$porcent = 0;
+							}	
 								
 						?> 
 						<?php if($taxname=="comercio"){?>
@@ -119,20 +119,12 @@ else
 						<div class="float-caption">
 							<h2><?php the_title();	?></h2>
 						 	<div class="price">
-								<?php
-								
-								if(($newprice<0)||($newprice==$regular)){
-									$newprice =0;
-								}
-								 if($sales==""){
-								 	$sales=0;
-								  } ?>
 								<?php if($taxname=="comercio"){?>
-									<span class="amount regular"> En Comercio: <span><?php echo "$".$regular; ?></span></span>
-									<span class="amount discount">Ahorras: <span><?php echo "$".$newprice;?></span></span>
-									<span class="amount sales">Gocupon: <span><?php echo "$".$sales;?></span></span>
+									<span class="amount regular"> En Comercio: <span><?php echo "$".get_field('precio_normal_aux',get_the_ID()); ?></span></span>
+									<span class="amount discount">Ahorras: <span><?php echo "%".round($porcent,0);?></span></span>
+									<span class="amount sales">Gocupon: <span><?php echo "$".get_field('precio_rebajado_aux',get_the_ID());?></span></span>
 								<?php }else {?>
-									<span class="amount regular"><span><?php echo "$".$regular; ?></span></span>
+									<span class="amount regular"><span><?php echo "$".get_post_meta( get_the_ID(), '_regular_price', true); ?></span></span>
 								<?php }?>
 						 	</div>
 

@@ -1,6 +1,8 @@
 <?php get_header();?>
 <a href="#modal-content" class="main-modal"></a>
 <div id="modal-content" class="modal-content" style="display:none;">
+	<span class="logo-modal"><img src="<?php echo get_template_directory_uri(); ?>/img/s-logo-go.png"> </span>
+	<a href="javascript:parent.$.fancybox.close();" class="close-modal">Ya estoy registrado</a>
 	<img src="<?php echo get_template_directory_uri(); ?>/img/modal-banner.jpg">
 	<div class="teaser-content">
 		<h1>Bienvenido a Gocupon</h1>
@@ -14,6 +16,7 @@
 
 <section class="feature-prod">
 	<div class="container woocommerce">
+<div class="breadcrumb"><a property="v:title" rel="v:url" href="http://gocupon.ganver.com/">Gocupon</a> » <span class="current">Home Page</span></div>
 	<?php //echo do_shortcode('[wpb-feature-product] '); ?>
 	<?php 
 	$posts = get_field('productos_for_slide','option');
@@ -215,6 +218,9 @@
 <?php get_footer();?>
 <script type="text/javascript">
     $(document).ready(function() {
-        $(".main-modal").fancybox().trigger('click');
+        $(".main-modal").fancybox({
+        	padding:0,
+        	closeBtn:false
+        }).trigger('click');
     });
 </script>

@@ -15,6 +15,8 @@
         <script src="<?php echo get_template_directory_uri(); ?>/js/vendor/bootstrap.min.js"></script>
         <script src="<?php echo get_template_directory_uri(); ?>/js/jquery.bxslider/jquery.bxslider.min.js"></script>
         <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+        
+        <script src="<?php echo get_template_directory_uri(); ?>/js/fancyapps/jquery.fancybox.js"></script>
         <script src="<?php echo get_template_directory_uri(); ?>/js/plugins.js"></script>
         <script src="<?php echo get_template_directory_uri(); ?>/js/main.js"></script>
         <script src="<?php echo get_template_directory_uri(); ?>/js/map.js"></script>

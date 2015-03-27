@@ -13,6 +13,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/bootstrap.css?v=<?php echo date('his');?>">
         <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/js/jquery.bxslider/jquery.bxslider.css?v=<?php echo date('his');?>">
+        
+        <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/js/fancyapps/jquery.fancybox.css?v=<?php echo date('his');?>">
         <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/main.css?v=<?php echo date('his');?>">
         <script src="<?php echo get_template_directory_uri(); ?>/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
         <?php wp_head(); ?>
