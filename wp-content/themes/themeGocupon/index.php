@@ -88,7 +88,7 @@
 </section>
 <section class="offers">
 	<div class="container">
-		<h1>Ofertas Destacadas</h1>
+		<h1>OFERTAS DESTACADAS</h1>
 		<?php
             $args = array(
                 'post_type' => 'product',
@@ -169,7 +169,7 @@
 </section>
 <section class="next-offers">
 	<div class="container">
-	<h1>Proximas Ofertas</h1>
+	<h1>PRÓXIMAS OFERTAS</h1>
 	<?php
             $args = array(
                 'post_type' => 'proximas-ofertas'

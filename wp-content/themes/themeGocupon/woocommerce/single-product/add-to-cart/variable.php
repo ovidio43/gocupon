@@ -76,25 +76,16 @@ global $woocommerce, $product, $post;
 			<input type="hidden" name="variation_id" value="" />
 
 			<?php do_action( 'woocommerce_after_single_variation' ); ?>
-		<span class="expirate-date">
-			<div class="bg-black">
+			<span class="expirate-date">
 				<?php 
 				$date_format = __( 'Y-m-d H:i:s' );
-				//I used "Y-m-d H-i-s" instead of "Y-m-d H:i:s"
 				$expiration_date = get_post_meta( get_the_ID(), '_expiration_date', true);
 
 				$dt_end = new DateTime(date_i18n( $date_format, strtotime( $expiration_date ) ));
 				$remain = $dt_end->diff(new DateTime());
+				echo  '<div class="wrap-expiration"> dias<br> <span class="bg-black day">'.$remain->d.'</span></div>' . ' <div class="wrap-expiration">horas <br><span class="bg-black hour">' .$remain->h.'</span></div>';
 				?>
-				<div class="col-md-6">
-					<span class="days"> Dias <br><span><?php echo $remain->d ?></span></span>
-				</div>
-				<div class="col-md-6">
-					<span class="hours">Horas <br><span><?php echo $remain->h;?></span></span>
-				</div>					
-			</div>
-						
-		</span>				
+			</span>				
 		</div>
 
 		<?php do_action( 'woocommerce_after_add_to_cart_button' ); ?>
