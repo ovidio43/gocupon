@@ -135,13 +135,14 @@
 						?> 
 						<span class="porcent"><span><?php echo round($porcent,0)."%";?></span></span>
 						<span class="expirate-date">
+							<span aria-hidden="true" class="glyphicon glyphicon-time"></span>
 							<?php 
 							$date_format = __( 'Y-m-d H:i:s' );
 							$expiration_date = get_post_meta( get_the_ID(), '_expiration_date', true);
 
 							$dt_end = new DateTime(date_i18n( $date_format, strtotime( $expiration_date ) ));
 							$remain = $dt_end->diff(new DateTime());
-							echo $remain->d . ' dias y ' . $remain->h . ' horas';
+							echo $remain->d . ' dias';
 							?>
 						</span>
 						<div class="float-caption">
@@ -218,9 +219,12 @@
 <?php get_footer();?>
 <script type="text/javascript">
     $(document).ready(function() {
+
+    });
+    $(window).load(function() {
         $(".main-modal").fancybox({
         	padding:0,
         	closeBtn:false
         }).trigger('click');
-    });
+	});
 </script>

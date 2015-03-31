@@ -36,7 +36,10 @@
       slideWidth: 145,
       slideMargin: 10,
       pager : false
-    });      
+    }); 
+    $(".fancybox").fancybox({
+      
+    });
 }());
 
 // Place any jQuery/helper plugins in here.
