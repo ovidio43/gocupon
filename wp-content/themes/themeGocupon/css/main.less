@@ -17,6 +17,15 @@ h2{
 	font-weight: 800;
 	font-size: 20px;
 }
+a {
+    color: #de331c;
+    text-decoration: none;
+    &:hover{
+    color: #de331c;
+    text-decoration: none;
+    opacity: 0.7;
+    }
+}
 #sidebar{
 	display: none;
 }
@@ -132,10 +141,14 @@ h2{
 		font-size: 38px;
 		color:#fff;
 	}
+	.thanks-txt{
+	    display: block;
+	    padding: 10px 0 0;		
+	}
 	form{
 		input{
 			width: 100%;
-			&[type="text"]{
+			&[type="email"]{
 				margin: 10px 0;
 				color: #000;
 			}
@@ -516,7 +529,7 @@ box-shadow:         0px 0px 0px 0px rgba(50, 50, 50, 0);
 
 }
 .container, #container{
-	width: 1000px;
+	width: 985px;
 }
 .comment-form-author{
 	display: none;
@@ -544,6 +557,10 @@ div.wpb_slider_area .item{
 	img{
 		width: 100%;
 		max-width: 1000px;
+		&.ajax-loader{
+			max-width: inherit;
+			width: auto;
+		}
 	}
 	ul{
 		padding: 0;
@@ -596,11 +613,22 @@ div.wpb_slider_area .item{
 		font-weight: 700;
 	}
 }
+.woocommerce .cart-collaterals .cart_totals, .woocommerce-page .cart-collaterals .cart_totals{
+	width: 250px!important;
+}
+.woocommerce a.button.alt, .woocommerce button.button.alt, .woocommerce input.button.alt, .woocommerce #respond input#submit.alt{
+	border: 3px solid #b4220e;
+	background-color: #de331c !important;
+	padding: 10px 20px;
+}
 .entry-summary{
 	color: #000;
 }
 .breadcrumbs{
 	padding: 40px 0 0 0 ;
+	a{
+		color: #b4220e;
+	}	
 	.removed_link{
 		color: #de331c;
 	}
@@ -857,20 +885,29 @@ div.wpb_slider_area .item{
 	background-position: bottom;
 	background-color: #231f20;
     float: left;
-    padding: 15px 25px 25px;
+    padding: 15px 15px 25px;
     width: 100%;	
 	-webkit-box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.75);
 	-moz-box-shadow:    0px 0px 5px 0px rgba(50, 50, 50, 0.75);
-	box-shadow:         0px 0px 5px 0px rgba(50, 50, 50, 0.75);    
+	box-shadow:         0px 0px 5px 0px rgba(50, 50, 50, 0.75);   
+	.thanks-txt{
+	    color: #fff;
+	    font-size: 12px;
+	    left: 24px;
+	    position: absolute;
+	    top: 100%;		
+	} 
 	h2{
 		font-size: 24px;
 		color: #fff;
 		 float: left;
+		 margin: 0;
 	}
 	.widget_wysija_cont{
 	    float: right;
 	    text-align: right;
-	    width: 50%;
+	    width: 60%;
+	    position: relative;
 	}
 	.wysija-paragraph{
 		display: inline-block;
@@ -885,6 +922,19 @@ div.wpb_slider_area .item{
 		padding: 5px 10px;
 		text-transform: uppercase;
 		color: #fff;
+		margin-top: 2px!important;
+		width: 92px;
+		text-align: center;		
+	}
+	input[type="email"]{
+	  margin: 0 8px 0 0px;
+	  width: 205px;
+	  padding: 2px 10px;		
+	}
+	input[type="text"]{
+	  margin: 0 12px 0 0;
+	  width: 207px;
+	  padding: 2px 10px;		
 	}
 }
 .footer{

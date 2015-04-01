@@ -1,4 +1,7 @@
-<?php get_header();?>
+<?php get_header();
+session_start();
+
+?>
 <a href="#modal-content" class="main-modal"></a>
 <div id="modal-content" class="modal-content" style="display:none;">
 	<span class="logo-modal"><img src="<?php echo get_template_directory_uri(); ?>/img/s-logo-go.png"> </span>
@@ -7,16 +10,17 @@
 	<div class="teaser-content">
 		<h1>Bienvenido a Gocupon</h1>
 		<p>Sed ut luctus quam. Etiam at ultricies purus. Donec eleifend arcu et purus ultrices hendrerit. Pellentesque at nulla sit amet orci placerat finibus. Phasellus tortor est, lobortis et cursus eu.</p>
-		<form action="" name="" id="">
-			<input type="text" value="" placeholder="Correo electrónico"/>
-			<input type="submit" value="INGRESAR"/>
-		</form>
+        <form action="/send-suscribe.php" method="post" id="mc-embedded-subscribe-form2" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                 <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="Correo electrónico" data-validate="validate(required, email)">
+                <input type="submit" value="INGRESAR" name="subscribe" id="mc-embedded-subscribe" class="wysija-submit">
+				<span class="thanks-txt"></span>	
+        </form>				
 	</div>
 </div>	
 
 <section class="feature-prod">
 	<div class="container woocommerce">
-<div class="breadcrumb"><a property="v:title" rel="v:url" href="http://gocupon.ganver.com/">Gocupon</a> » <span class="current">Home Page</span></div>
+<div class="breadcrumb"><a property="v:title" rel="v:url" href="<?php echo esc_url(home_url('/')); ?>">Gocupon</a> » <span class="current">Home Page</span></div>
 	<?php //echo do_shortcode('[wpb-feature-product] '); ?>
 	<?php 
 	$posts = get_field('productos_for_slide','option');
@@ -193,9 +197,15 @@
 <section class="wrap-newsletter">
 	<div class="container">
 		<div class="newsletter">
-			<?php if ( is_active_sidebar( 'newsletter' ) ) : ?>
-			  <?php dynamic_sidebar( 'newsletter' ); ?>
-			<?php endif; ?> 			
+			<h2>Suscribite a Newsletter</h2>
+			<div class="widget_wysija_cont">
+	            <form action="/send-suscribe.php" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+	            		<input type="text" value="" name="FNAME" class="" id="mce-FNAME" placeholder="Nombre">
+	                     <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="nombre@email.com" data-validate="validate(required, email)">
+	                    <input type="submit" value="SUSCRIBIRME" name="subscribe" id="mc-embedded-subscribe" class="wysija-submit">
+						<span class="thanks-txt"></span>	
+	            </form>						
+			</div>		
 		</div>
 	</div>
 </section>
@@ -217,14 +227,26 @@
 	</div>	
 </section>
 <?php get_footer();?>
-<script type="text/javascript">
-    $(document).ready(function() {
+<?php
+if(!$_SESSION["modal_active"]){
 
-    });
-    $(window).load(function() {
-        $(".main-modal").fancybox({
-        	padding:0,
-        	closeBtn:false
-        }).trigger('click');
-	});
-</script>
+	$_SESSION["modal_active"] = "displaymodal";?>
+	<script type="text/javascript">
+	    $(document).ready(function() {
+
+	    });
+	    $(window).load(function() {
+	        $(".main-modal").fancybox({
+	        	padding:0,
+	        	closeBtn:false,
+			    closeBtn    : false,
+			    closeClick  : false,
+			    helpers     : {
+			        overlay : {closeClick: false}
+			    }
+	        }).trigger('click');
+		});
+	</script>	
+<?php }
+?>
+

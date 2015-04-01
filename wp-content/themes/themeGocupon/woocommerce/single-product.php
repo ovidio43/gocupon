@@ -26,7 +26,10 @@ get_header( 'shop' ); ?>
 		do_action( 'woocommerce_before_main_content' );
 	?>
 		<div class="breadcrumbs">
-			<?php the_breadcrumb();?>
+			<a property="v:title" rel="v:url" href="<?php echo esc_url(home_url('/')); ?>">Gocupon</a> » <span class="current">
+				<?php the_title();
+				?>
+			</span>
 		</div>	
 		<?php while ( have_posts() ) : the_post(); ?>
 

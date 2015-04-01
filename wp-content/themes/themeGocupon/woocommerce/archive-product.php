@@ -17,28 +17,45 @@ else
     $paged = 1; 
 
 ?>
+
 <section class="offers">
 	<div class="container">
-		<div class="breadcrumbs">
-			<?php the_breadcrumb();?>
-		</div>	
+		<div class="breadcrumbs"><a property="v:title" rel="v:url" href="<?php echo esc_url(home_url('/')); ?>">Gocupon</a> » <span class="current">
+			<?php if($taxname=="comercio"){
+				echo $term->name;
+			}else{
+				echo "Productos Gocupon";
+			}
+			?>
+		</span>
+		</div>
 		
 		<?php
-		if($current_tax!=""){
-			$taxarray = array( array( 'taxonomy' => $taxname,'field' => 'slug','terms'=>$current_tax));
-			$metaquery = array(array('key' => 'producto_de_comercio',	'value' => '1','compare' => '=='));
-		}else{
-			$taxarray = array();
-			$metaquery = array(	array('key' => 'producto_de_comercio',	'value' => '1','compare' => '!=')); 
+			if(is_search()) {
+			    $args = array(
+			        'post_type' => 'product',
+			        'posts_per_page' => 8,
+			        'paged' => $paged ,	
+			        's' => $_GET['s']
+			    );
+			} else {
+				if($current_tax!=""){
+					$taxarray = array( array( 'taxonomy' => $taxname,'field' => 'slug','terms'=>$current_tax));
+					$metaquery = array(array('key' => 'producto_de_comercio',	'value' => '1','compare' => '=='));
+				}else{
+					$taxarray = array();
+					$metaquery = array(	array('key' => 'producto_de_comercio',	'value' => '1','compare' => '!=')); 
 
-		}
-            $args = array(
-                'post_type' => 'product',
-                'posts_per_page' => 8,
-                'tax_query' => $taxarray,
-                'paged' => $paged ,	
-                'meta_query' => $metaquery
-            );
+				}
+		        $args = array(
+		            'post_type' => 'product',
+		            'posts_per_page' => 8,
+		            'tax_query' => $taxarray,
+		            'paged' => $paged ,	
+		            'meta_query' => $metaquery
+		        );
+		}		
+
             $the_query = new WP_Query($args);
 		?>
 		<?php if ($the_query->have_posts()) : ?>
@@ -73,8 +90,13 @@ else
 				</div>
 				<h2 class="subtitle"><?php echo $the_query->found_posts;?> CUPONES EN CARTELERA</h2>
 			<?php }else{ ?>
+				<?php if(is_search()) {?>
+				<h1 class="main-title">Resultados de Busqueda para <?php echo '"'.$_GET['s'].'"';?></h1>
+				<h2 class="subtitle">Se encontró <?php echo $the_query->found_posts;?> coincidencias</h2>				
+				<?php }else{?>
 				<h1 class="main-title">Productos Gocupon</h1>
 				<h2 class="subtitle"><?php echo $the_query->found_posts;?> PRODUCTOS PARA ELIGIR</h2>
+				<?php }?>
 			<?php }?>
 			<div class="row">
 			<?php $c=0;while ($the_query->have_posts()) : $the_query->the_post(); 

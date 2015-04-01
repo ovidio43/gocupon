@@ -19,7 +19,7 @@
         <script src="<?php echo get_template_directory_uri(); ?>/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
         <?php wp_head(); ?>
     </head>
-    <body <?php body_class(); ?>>
+    <body <?php body_class(); ?> rel="<?php echo get_template_directory_uri(); ?>">
       <header class="header">
         <div class="container">
           <div class="navbar-header">
