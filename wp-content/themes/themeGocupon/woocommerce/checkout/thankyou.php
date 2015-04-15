@@ -34,7 +34,26 @@ if ( $order ) : ?>
 	<?php else : ?>
 
 		<p><?php echo apply_filters( 'woocommerce_thankyou_order_received_text', __( 'Thank you. Your order has been received.', 'woocommerce' ), $order ); ?></p>
-		<p><b>Tu estado de Orden es: </b> <?php echo $order->post_status;?></p>
+		<p><b>Tu estado de Orden es: </b> <?php
+		if($order->post_status=="wc-on-hold"){
+			echo "en espera";
+		}elseif($order->post_status=="wc-pending"){
+			echo "Pendiente de pago";
+
+		}elseif($order->post_status=="wc-processing"){
+			echo "Procesando";
+		}elseif($order->post_status=="wc-completed"){
+			echo "Completado";
+		}elseif($order->post_status=="wc-cancelled"){
+			echo "Cancelado";
+		}elseif($order->post_status=="wc-refunded"){
+			echo "Devuelto";
+		}elseif($order->post_status=="wc-checked-in"){	
+			echo "Checked in";
+		}else{	
+			echo $order->post_status;
+		}
+		?></p>
 		<ul class="order_details">
 		
 			<li class="order">
