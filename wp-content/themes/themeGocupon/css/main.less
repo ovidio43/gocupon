@@ -55,6 +55,7 @@ a {
 }
 .header{
 	background-image: url(../img/bg-black.jpg);
+	min-width: 985px;
 	.container{
 		position: relative;
 	}
@@ -91,14 +92,31 @@ a {
 }
 .wrap-navbar{
 	background-color: #de331c;
+	min-width: 985px;
+}
+.woocommerce img, .woocommerce-page img{
+	width: auto!important;
+}
+.entry-content .woocommerce form .form-row .input-text, .entry-content  .woocommerce-page form .form-row .input-text{
+    border: 1px solid #ccc;
+    padding: 5px;
+}
+.entry-content .woocommerce a.button, .entry-content .woocommerce button.button, .entry-content .woocommerce input.button, .entry-content .woocommerce #respond input#submit{
+	border: 3px solid #b4220e;
+	font-size: 16px;
+    background-color: #de331c;
+    color: #fff;
+    padding: 10px 20px;	
+    font-weight: normal;
+}
+.payment_methods li{
+	background-image: none;
 }
 .btn-custom{
     background-color: #231f20;
     color: #fff;
     font-family: "Dosis",sans-serif;
-
     text-transform: uppercase;
-	
 	&.btn{
 		-webkit-border-radius: 0px;
 		-moz-border-radius: 0px;
@@ -108,6 +126,9 @@ a {
 		padding: 7px 15px;
 		line-height: 1em;
 	}  
+	&:hover, &:focus{
+		color: #de331c;
+	}
 }
 .logo-modal{
 	position: absolute;
@@ -200,6 +221,9 @@ a {
 			border: 0;
 			top: 0;
 			padding: 6px 20px;
+			&:hover, &:focus{
+				color: #de331c;
+			}
 		}
 	}
 	.dropdown_product_cat{
@@ -941,7 +965,7 @@ div.wpb_slider_area .item{
 	background-image: url(../img/bg-black.jpg);
 	overflow: hidden;
 	color: #fff;
-
+	min-width: 985px;
 	a{
 		color: #fff;
 	}
@@ -963,6 +987,11 @@ div.wpb_slider_area .item{
 				display: block;
 				border-right: 1px solid #fff;
 				line-height: 1em;
+			}
+			&:last-child{
+				a{
+					border-right: 0;
+				}
 			}
 		}
 	}

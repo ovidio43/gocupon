@@ -50,13 +50,13 @@ session_start();
 								$porcent = 0;
 							}						
 							 ?>
-							<div class="col-md-4">
+							<div class="col-xs-4">
 								<span class="regular"> En Comercio <br><span><?php echo "$".get_field('precio_normal_aux'); ?></span></span>
 							</div>
-							<div class="col-md-4">
+							<div class="col-xs-4">
 								<span class="porcent">Ahorro <br><span><?php echo round($porcent,0)."%";?></span></span>
 							</div>
-							<div class="col-md-4">
+							<div class="col-xs-4">
 								<span class="sale">Gocupon <br><span><?php echo "$".get_field('precio_rebajado_aux');?></span></span>
 							</div>														
 					 	</div>
@@ -73,10 +73,10 @@ session_start();
 							$dt_end = new DateTime(date_i18n( $date_format, strtotime( $expiration_date ) ));
 							$remain = $dt_end->diff(new DateTime());
 							?>
-							<div class="col-md-3">
+							<div class="col-xs-3">
 								<span class="days"> Dias <br><span><?php echo $remain->d ?></span></span>
 							</div>
-							<div class="col-md-3">
+							<div class="col-xs-3">
 								<span class="hours">Horas <br><span><?php echo $remain->h;?></span></span>
 							</div>							
 						</span>					                	
@@ -119,10 +119,10 @@ session_start();
 
 				if(($c==2)||($c==3)||($c==6)||($c==7)){
 					$size ="bigimg-prod";
-					$cols = "col-md-8";
+					$cols = "col-xs-8";
 				}else{
 					$size ="smallimg-prod";
-					$cols = "col-md-4";
+					$cols = "col-xs-4";
 				}
 				?>
 				<div class="<?=$cols?> item-offer">
@@ -184,7 +184,7 @@ session_start();
 		<?php if ($the_query->have_posts()) : ?>
 			<div class="row">
 			<?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
-				<div class="col-md-4 item-offer">
+				<div class="col-xs-4 item-offer">
 					<?php echo get_the_post_thumbnail( get_the_ID(),'medium'); ?> 
 					<h2><?php the_title();?></h2>
 				</div>

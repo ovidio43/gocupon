@@ -10,7 +10,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title><?php wp_title( '|', true, 'right' ); ?></title>
         <meta name="description" content="<?php bloginfo( 'description' ); ?>">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+
         <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/bootstrap.css?v=<?php echo date('his');?>">
         <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/js/jquery.bxslider/jquery.bxslider.css?v=<?php echo date('his');?>">
         
@@ -26,7 +26,7 @@
             <a class="navbar-brand" href="<?php echo esc_url(home_url('/')); ?>"></a>
           </div>
           <span class="bg-icon icon-search"><span aria-hidden="true" class="glyphicon glyphicon-search"></span></span>
-          <a href="/cart/" class="bg-icon icon-carts"><span aria-hidden="true" class="glyphicon glyphicon-shopping-cart"></span></a>
+          <a href="/carrito/" class="bg-icon icon-carts"><span aria-hidden="true" class="glyphicon glyphicon-shopping-cart"></span></a>
         </div>
       </header>
       <nav class="wrap-navbar" role="navigation">

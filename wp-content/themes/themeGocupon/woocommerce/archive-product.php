@@ -65,19 +65,19 @@ else
 				
 				?>
 				<div class="row comercio-head">
-					<div class="col-md-1">
+					<div class="col-xs-1">
 					<?php $thumb = wp_get_attachment_image_src(get_field('logotipo_de_comercio', 'comercio_'.$term_id), 'thumbnail' );?>
 						<?php if($thumb['0']!=""){?>
 						<img src="<?php echo $thumb['0'];?>">
 						<?php }?>
 					</div>
-					<div class="col-md-6">
+					<div class="col-xs-6">
 						<h1><?php echo $term->name;?></h1>
 						<?php 
 							echo get_field('descripcion_comercio', 'comercio_'.$term_id);
 						?>
 					</div>
-					<div class="col-md-5">
+					<div class="col-xs-5">
 						<?php 
 						$location = get_field('ubicacion_de_comercio', 'comercio_'.$term_id);
 						if( !empty($location) ):
@@ -108,7 +108,7 @@ else
 				}
 				
 				?>
-				<div class=" col-md-4 item-offer">
+				<div class=" col-xs-4 item-offer">
 					<div class="wrap-offer">
 						<?php echo get_the_post_thumbnail( get_the_ID(),'smallimg-prod'); 
 							$regular = get_field('precio_normal_aux',get_the_ID());
