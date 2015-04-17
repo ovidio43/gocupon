@@ -33,7 +33,7 @@ $order = wc_get_order( $order_id );
 				if ( apply_filters( 'woocommerce_order_item_visible', true, $item ) ) {
 					?>
 					<tr class="<?php echo esc_attr( apply_filters( 'woocommerce_order_item_class', 'order_item', $item, $order ) ); ?>">
-						<td class="product-name">
+						<td class="product-name">				
 							<?php
 								if ( $_product && ! $_product->is_visible() ) {
 									echo apply_filters( 'woocommerce_order_item_name', $item['name'], $item );
@@ -158,7 +158,34 @@ $order = wc_get_order( $order_id );
 				<td><?php echo wptexturize( $order->customer_note ); ?></td>
 			</tr>
 		<?php } ?>
+		<tr>
+			<th scope="row"><b>Estado:</b></th>
+			<td><span class="amount">
+<?php
+		if($order->post_status=="wc-on-hold"){
+			echo "en espera";
+		}elseif($order->post_status=="wc-pending"){
+			echo "Pendiente de pago";
+
+		}elseif($order->post_status=="wc-processing"){
+			echo "Procesando";
+		}elseif($order->post_status=="wc-completed"){
+			echo "Completado";
+		}elseif($order->post_status=="wc-cancelled"){
+			echo "Cancelado";
+		}elseif($order->post_status=="wc-refunded"){
+			echo "Devuelto";
+		}elseif($order->post_status=="wc-checked-in"){	
+			echo "Checked in";
+		}else{	
+			echo $order->post_status;
+		}
+		?>			
+
+			</span></td>
+		</tr>			
 	</tfoot>
+
 </table>
 
 <?php do_action( 'woocommerce_order_details_after_order_table', $order ); ?>
