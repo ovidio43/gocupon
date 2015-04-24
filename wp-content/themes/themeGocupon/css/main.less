@@ -211,6 +211,8 @@ a {
 		}
 		.search-field{
 			width: 100%;
+			padding:3px 0 3px 26px ;
+			border: 1px solid #ccc;
 		}
 		input[type="submit"]{
 			background-color: #231f20;
@@ -229,6 +231,19 @@ a {
 			}
 		}
 	}
+	.woocommerce-product-search:before {
+	    display: block;
+	    width: 14px;
+	    height: 14px;
+	    content: "\e003";
+	    font-family: 'Glyphicons Halflings';
+	    background-position: -48px 0;
+	    position: absolute;
+	    top:2px;
+	    left:8px;
+	    opacity: .5;
+	    z-index: 1000;
+	}		
 	.dropdown_product_cat{
 		float: right;
 	}
@@ -270,7 +285,7 @@ a {
 		}
 		li .product-rating{
 			img{
-				width: auto;
+				width: auto!important;
 				display: inline;
 			}
 			.text-rating, em{
