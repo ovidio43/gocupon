@@ -1,7 +1,7 @@
 <?php
 function custom_post_type_init() {
     $post_types = array(
-        array("slug" => "proximas-ofertas", "plural" => "Proximas ofertas", "singular" => "Proxima oferta", "rewrite" => "proximas-ofertas", "public" => true, "archive" => true, "supports" => array('title',  'thumbnail'))
+        array("slug" => "proximas-ofertas", "plural" => "Próximas ofertas", "singular" => "Próxima oferta", "rewrite" => "proximas-ofertas", "public" => true, "archive" => true, "supports" => array('title',  'thumbnail'))
     );
 
     foreach ($post_types as $pt) {
