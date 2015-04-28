@@ -8,7 +8,7 @@ session_start();
 	<a href="javascript:parent.$.fancybox.close();" class="close-modal">Ya estoy registrado</a>
 	<img src="<?php echo get_template_directory_uri(); ?>/img/modal-banner.jpg">
 	<div class="teaser-content">
-		<h1>Bienvenido a Gocupon</h1>
+		<h1>Bienvenido a Cupons Up</h1>
 		<p>Sed ut luctus quam. Etiam at ultricies purus. Donec eleifend arcu et purus ultrices hendrerit. Pellentesque at nulla sit amet orci placerat finibus. Phasellus tortor est, lobortis et cursus eu.</p>
         <form action="/send-suscribe.php" method="post" id="mc-embedded-subscribe-form2" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
                  <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="Correo electrónico" data-validate="validate(required, email)">
@@ -20,7 +20,7 @@ session_start();
 
 <section class="feature-prod">
 	<div class="container woocommerce">
-<div class="breadcrumb"><a property="v:title" rel="v:url" href="<?php echo esc_url(home_url('/')); ?>">Gocupon</a> » <span class="current">Home Page</span></div>
+<div class="breadcrumb"><a property="v:title" rel="v:url" href="<?php echo esc_url(home_url('/')); ?>">Cupons Up</a> » <span class="current">Home Page</span></div>
 	<?php //echo do_shortcode('[wpb-feature-product] '); ?>
 	<?php 
 	$posts = get_field('productos_for_slide','option');
@@ -197,12 +197,12 @@ session_start();
 <section class="wrap-newsletter">
 	<div class="container">
 		<div class="newsletter">
-			<h2>Suscribite a Newsletter</h2>
+			<h2>Recibir Ofertas</h2>
 			<div class="widget_wysija_cont">
 	            <form action="/send-suscribe.php" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
 	            		<input type="text" value="" name="FNAME" class="" id="mce-FNAME" placeholder="Nombre">
 	                     <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="nombre@email.com" data-validate="validate(required, email)">
-	                    <input type="submit" value="SUSCRIBIRME" name="subscribe" id="mc-embedded-subscribe" class="wysija-submit">
+	                    <input type="submit" value="REGISTRARME" name="subscribe" id="mc-embedded-subscribe" class="wysija-submit">
 						<span class="thanks-txt"></span>	
 	            </form>						
 			</div>		
