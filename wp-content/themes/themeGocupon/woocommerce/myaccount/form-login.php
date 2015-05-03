@@ -97,7 +97,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 			<?php do_action( 'woocommerce_register_form' ); ?>
 			<?php do_action( 'register_form' ); ?>
-
+			<br style="clear:both;">Al hacer click en "Registrar", acepto que:
+			<ul>
+				<li style="margin: 0 0 0 18px;padding:0;list-style:initial;">He leido y aceptado las <a href="/terminos-y-condiciones/">condiciones de uso</a> y el <a href="/privacidad/">aviso de privacidad</a>.</li>
+			</ul>
+			 
 			<p class="form-row">
 				<?php wp_nonce_field( 'woocommerce-register' ); ?>
 				<input type="submit" class="button" name="register" value="<?php _e( 'Register', 'woocommerce' ); ?>" />
