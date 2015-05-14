@@ -57,7 +57,7 @@ session_start();
 								<span class="porcent">Ahorro <br><span><?php echo round($porcent,0)."%";?></span></span>
 							</div>
 							<div class="col-xs-4">
-								<span class="sale">Gocupon <br><span><?php echo "$".get_field('precio_rebajado_aux');?></span></span>
+								<span class="sale">Cupons Up <br><span><?php echo "$".get_field('precio_rebajado_aux');?></span></span>
 							</div>														
 					 	</div>
 						<div class="product-rating">
@@ -154,7 +154,7 @@ session_start();
 						 	<div class="price">	
 								<span class="amount regular"> Precio en Comercio: <span><?php echo "$".get_field('precio_normal_aux'); ?></span></span>
 								<span class="amount discount">Promocion: <span><?php echo "%".round($porcent,0);?></span></span>
-								<span class="amount sales">Precio en Gocupon: <span><?php echo "$".get_field('precio_rebajado_aux');?></span></span>
+								<span class="amount sales">Precio en Cupons Up: <span><?php echo "$".get_field('precio_rebajado_aux');?></span></span>
 						 	</div>
 
 							<a href="<?php echo get_the_permalink(get_the_ID()); ?>" class="show-offer">Ver Oferta</a>

@@ -32,7 +32,7 @@ add_action('init', 'custom_post_type_init');
 add_action( 'init', 'create_my_taxonomies', 0 );
 function create_my_taxonomies() {
     $taxonomies = array(
-        array("name_tax" => "comercio", "related_tax" => "product", "name" => "Comercio", "add_new_item" => "Agregar Comercio", "new_item_name" => "Nuevo Comercio")
+        array("name_tax" => "comercio", "related_tax" => "product", "name" => "Comercio para Cupon", "add_new_item" => "Agregar Comercio", "new_item_name" => "Nuevo Comercio")
     );
     foreach ($taxonomies as $tax) {
         register_taxonomy(
