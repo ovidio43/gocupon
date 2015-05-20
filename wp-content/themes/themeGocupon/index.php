@@ -1,7 +1,4 @@
-<?php get_header();
-session_start();
-
-?>
+<?php session_start(); get_header();?>
 <a href="#modal-content" class="main-modal"></a>
 <div id="modal-content" class="modal-content" style="display:none;">
 	<span class="logo-modal"><img src="<?php echo get_template_directory_uri(); ?>/img/cupons-logo-s.png"> </span>

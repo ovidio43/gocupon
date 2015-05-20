@@ -54,3 +54,6 @@ global $product;
 	<meta itemprop="priceCurrency" content="<?php echo get_woocommerce_currency(); ?>" />
 	<link itemprop="availability" href="http://schema.org/<?php echo $product->is_in_stock() ? 'InStock' : 'OutOfStock'; ?>" />
 </div>
+
+<?php echo $product->is_in_stock() ? '' : '<div class="woocommerce-error">Producto agotado</div>'; ?>	
+

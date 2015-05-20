@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" <?php language_attributes(); ?>> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" <?php language_attributes(); ?>> <![endif]-->
@@ -44,7 +42,7 @@
           </div><!--/.navbar-collapse -->
         </div>
       </nav>  
-      <div class="wrap-search-box">
+      <div class="wrap-search-box display-boxsearch">
         <div class="container">
           <?php if ( is_active_sidebar( 'search_bar' ) ) : ?>
               <?php dynamic_sidebar( 'search_bar' ); ?>
@@ -82,12 +80,6 @@
                       <?php } ?>
                     </ul>
                 </div>
-              
           <?php endif; ?>  
-
-
-      
-
-            
         </div>
       </div>      

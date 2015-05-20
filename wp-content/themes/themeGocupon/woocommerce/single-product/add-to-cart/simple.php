@@ -56,16 +56,12 @@ if ( ! $product->is_purchasable() ) {
 
 	 	<input type="hidden" name="add-to-cart" value="<?php echo esc_attr( $product->id ); ?>" />
 
-	 	<button type="submit" class="single_add_to_cart_button button alt"><?php echo $product->single_add_to_cart_text(); ?></button>
-
+	 	<button type="submit" class="single_add_to_cart_button button alt" <?php echo $product->is_in_stock() ? '' : 'disabled'; ?>><?php echo $product->single_add_to_cart_text(); ?></button>
 		<?php do_action( 'woocommerce_after_add_to_cart_button' ); ?>
 	</form>
 	<div class="wrap-share" style="text-align:right;padding:0 0 10px 0;">
-<!-- Go to www.addthis.com/dashboard to customize your tools -->
-
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-539f76f8264f1eac" async="async"></script>
-<!-- Go to www.addthis.com/dashboard to customize your tools -->
-<div class="addthis_sharing_toolbox"></div>		
+		<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-539f76f8264f1eac" async="async"></script>
+		<div class="addthis_sharing_toolbox"></div>		
 	</div>
 	<?php do_action( 'woocommerce_after_add_to_cart_form' ); ?>
 
