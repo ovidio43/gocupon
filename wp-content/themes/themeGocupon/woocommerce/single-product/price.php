@@ -44,7 +44,7 @@ global $product;
 		 <?php if(get_field('producto_de_comercio')){?>
 			<span class="amount regular"> Precio en Comercio: <span><?php echo "$".get_field('precio_normal_aux'); ?></span></span>
 			<span class="amount discount">Promocion: <span><?php echo "%".round($porcent,0);?></span></span>
-			<span class="amount sales">Precio en Gocupon: <span><?php echo "$".get_field('precio_rebajado_aux');?></span></span>
+			<span class="amount sales">Precio en Cupons Up: <span><?php echo "$".get_field('precio_rebajado_aux');?></span></span>
 		<?php }else{ ?>
 			<span class="amount regular"> Precio por unidad: <span><?php echo $product->get_price_html(); ?></span></span>
 		<?php }?>

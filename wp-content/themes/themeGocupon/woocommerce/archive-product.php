@@ -20,11 +20,11 @@ else
 
 <section class="offers">
 	<div class="container">
-		<div class="breadcrumbs"><a property="v:title" rel="v:url" href="<?php echo esc_url(home_url('/')); ?>">Gocupon</a> » <span class="current">
+		<div class="breadcrumbs"><a property="v:title" rel="v:url" href="<?php echo esc_url(home_url('/')); ?>">Cupons Up</a> » <span class="current">
 			<?php if($taxname=="comercio"){
 				echo $term->name;
 			}else{
-				echo "Productos Gocupon";
+				echo "Productos Cupons Up";
 			}
 			?>
 		</span>
@@ -94,7 +94,7 @@ else
 				<h1 class="main-title">Resultados de Busqueda para <?php echo '"'.$_GET['s'].'"';?></h1>
 				<h2 class="subtitle">Se encontró <?php echo $the_query->found_posts;?> coincidencias</h2>				
 				<?php }else{?>
-				<h1 class="main-title">Productos Gocupon</h1>
+				<h1 class="main-title">Productos Cupons Up</h1>
 				<h2 class="subtitle"><?php echo $the_query->found_posts;?> PRODUCTOS PARA ELIGIR</h2>
 				<?php }?>
 			<?php }?>
@@ -128,7 +128,6 @@ else
 								<?php 
 								$date_format = __( 'Y-m-d H:i:s' );
 								$expiration_date = get_post_meta( get_the_ID(), '_expiration_date', true);
-
 								$dt_end = new DateTime(date_i18n( $date_format, strtotime( $expiration_date ) ));
 								$remain = $dt_end->diff(new DateTime());
 								echo $remain->d . ' dias';
@@ -136,7 +135,8 @@ else
 							</span>
 						<?php }else{?>
 							<span class="expirate-date">
-							<?php echo $product->get_stock_quantity(get_the_ID()); ?>
+							<?php
+								echo $product->get_stock_quantity(get_the_ID()); ?>
 							<?php //global $product; echo $product->stock;  ?> Restantes
 							</span>
 						<?php }?>
@@ -146,7 +146,7 @@ else
 								<?php if(get_field('producto_de_comercio',get_the_ID())){?>
 									<span class="amount regular"> En Comercio: <span><?php echo "$".get_field('precio_normal_aux',get_the_ID()); ?></span></span>
 									<span class="amount discount">Ahorras: <span><?php echo "%".round($porcent,0);?></span></span>
-									<span class="amount sales">Gocupon: <span><?php echo "$".get_field('precio_rebajado_aux',get_the_ID());?></span></span>
+									<span class="amount sales">Cupons Up: <span><?php echo "$".get_field('precio_rebajado_aux',get_the_ID());?></span></span>
 								<?php }else {?>
 									<span class="amount sales"><span><?php echo "$".get_post_meta( get_the_ID(), '_regular_price', true); ?></span></span>
 								<?php }?>

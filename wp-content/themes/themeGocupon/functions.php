@@ -41,7 +41,7 @@ if ( ! function_exists( 'the_breadcrumb' ) ) :
 
     function the_breadcrumb() {
           /* === OPTIONS === */
-        $text['home']     = _x( 'Gocupon', 'Gocupon', 'pietergoosen' ); // text for the 'Home' link
+        $text['home']     = _x( 'Cupons Up', 'Cupons Up', 'pietergoosen' ); // text for the 'Home' link
      $text['category'] = __( 'Archive by Category "%s"', 'pietergoosen' );  // text for a category page
      $text['search']   = __( 'Search Results for "%s" Query', 'pietergoosen' ); // text for a search results page
      $text['tag']      = __( 'Posts Tagged "%s"', 'pietergoosen' );  // text for a tag page

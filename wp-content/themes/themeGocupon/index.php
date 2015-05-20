@@ -6,10 +6,11 @@ session_start();
 <div id="modal-content" class="modal-content" style="display:none;">
 	<span class="logo-modal"><img src="<?php echo get_template_directory_uri(); ?>/img/cupons-logo-s.png"> </span>
 	<a href="javascript:parent.$.fancybox.close();" class="close-modal">Ya estoy registrado</a>
-	<img src="<?php echo get_template_directory_uri(); ?>/img/modal-banner.jpg">
+	<?php $image_modal = wp_get_attachment_image_src( get_field('image_modal','option'), 'big');?>
+	<img src="<?php echo $image_modal[0];?>">
 	<div class="teaser-content">
-		<h1>Bienvenido a Cupons Up</h1>
-		<p>Sed ut luctus quam. Etiam at ultricies purus. Donec eleifend arcu et purus ultrices hendrerit. Pellentesque at nulla sit amet orci placerat finibus. Phasellus tortor est, lobortis et cursus eu.</p>
+		<h1><?php the_field('title_modal','option')?></h1>
+		<p><?php the_field('content_modal','option')?></p>
         <form action="/send-suscribe.php" method="post" id="mc-embedded-subscribe-form2" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
                  <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="Correo electrónico" data-validate="validate(required, email)">
                 <input type="submit" value="INGRESAR" name="subscribe" id="mc-embedded-subscribe" class="wysija-submit">
@@ -177,7 +178,8 @@ session_start();
 	<h1>PRÓXIMAS OFERTAS</h1>
 	<?php
             $args = array(
-                'post_type' => 'proximas-ofertas'
+                'post_type' => 'proximas-ofertas',
+                'post_status' => array ( 'publish' )
             );
             $the_query = new WP_Query($args);
 	?>
@@ -187,6 +189,7 @@ session_start();
 				<div class="col-xs-4 item-offer">
 					<?php echo get_the_post_thumbnail( get_the_ID(),'medium'); ?> 
 					<h2><?php the_title();?></h2>
+
 				</div>
 		    <?php endwhile; ?>
 		    </div>
