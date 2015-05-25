@@ -22,7 +22,7 @@
     $('.bxslider').bxSlider({
       mode: 'fade',
       pager: false,
-      auto: true,
+      auto: ($(".bxslider li").length > 1) ? true: false,
       controls: false
     }); 
     $('.side-images').bxSlider({

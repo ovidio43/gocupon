@@ -27,11 +27,8 @@
 		    <?php foreach( $posts as $post): // variable must be called $post (IMPORTANT) ?>
 		        <?php setup_postdata($post); ?>
 			<?php
-			global $product;
-			$attachment_ids = $product->get_gallery_attachment_ids();
-			foreach( $attachment_ids as $attachment_id ) 
-			{
-				$med_image_url = wp_get_attachment_image_src( $attachment_id, 'slideimg-prod');?>
+			$featureProd=get_the_ID();
+				$med_image_url = wp_get_attachment_image_src(get_post_thumbnail_id(get_the_ID()), 'slideimg-prod');?>
 				<li>
 					<img src="<?php echo $med_image_url[0];?>">
 					<div class="caption-product">
@@ -80,8 +77,7 @@
 						</span>					                	
 					 	<a href="<?php echo get_the_permalink(get_the_ID()); ?>" class="show-offer">Ver Oferta</a>
 					</div>
-				</li>
-			<?php }?>               
+				</li>              
 		    <?php endforeach; ?>
 	    </ul>
 	    <?php wp_reset_postdata(); ?>
@@ -95,6 +91,7 @@
             $args = array(
                 'post_type' => 'product',
                 'posts_per_page' => 8,
+                'post__not_in' => array($featureProd),
 				'meta_query'		=> array(
 					array(
 						'key' => 'producto_de_comercio',
