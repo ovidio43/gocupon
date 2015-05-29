@@ -79,16 +79,16 @@ global $woocommerce, $product, $post;
 			<?php do_action( 'woocommerce_after_single_variation' ); ?>
 			<span class="expirate-date">
 				<?php 
+				date_default_timezone_set(get_option('timezone_string'));
 				$date_format = __( 'Y-m-d H:i:s' );
 				$expiration_date = get_post_meta( get_the_ID(), '_expiration_date', true);
-
-				$dt_end = new DateTime(date_i18n( $date_format, strtotime( $expiration_date ) ));
+				
+				$dt_end = new DateTime(date_i18n( $date_format, strtotime( $expiration_date ) ), new DateTimeZone(get_option('timezone_string')));
 				$remain = $dt_end->diff(new DateTime());
 				echo  '<div class="wrap-expiration"> dias<br> <span class="bg-black day">'.$remain->d.'</span></div>' . ' <div class="wrap-expiration">horas <br><span class="bg-black hour">' .$remain->h.'</span></div>';
 				?>
 			</span>				
 		</div>
-
 		<?php do_action( 'woocommerce_after_add_to_cart_button' ); ?>
 
 	<?php else : ?>

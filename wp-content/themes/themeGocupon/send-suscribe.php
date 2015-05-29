@@ -8,7 +8,7 @@
 <?php
 $merges = array('FNAME'=>$_POST['FNAME']);
 $apiKey = '7f93d190326b76e9628023311a522109-us10';
-$listId = 'd176da0ee2';
+$listId = $_POST['idmailchimp'];
 $double_optin=false;
 $send_welcome=false;
 $email_type = 'html';

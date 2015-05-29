@@ -126,9 +126,10 @@ else
 							<span class="expirate-date">
 							<span aria-hidden="true" class="glyphicon glyphicon-time"></span>
 								<?php 
+								date_default_timezone_set(get_option('timezone_string'));
 								$date_format = __( 'Y-m-d H:i:s' );
 								$expiration_date = get_post_meta( get_the_ID(), '_expiration_date', true);
-								$dt_end = new DateTime(date_i18n( $date_format, strtotime( $expiration_date ) ));
+								$dt_end = new DateTime(date_i18n( $date_format, strtotime( $expiration_date ) ), new DateTimeZone(get_option('timezone_string')));
 								$remain = $dt_end->diff(new DateTime());
 								echo $remain->d . ' dias';
 								?>

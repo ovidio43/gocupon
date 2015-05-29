@@ -10,6 +10,7 @@
 		<p><?php the_field('content_modal','option')?></p>
         <form action="/send-suscribe.php" method="post" id="mc-embedded-subscribe-form2" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
                  <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="Correo electrónico" data-validate="validate(required, email)">
+                 <input type="hidden" name="idmailchimp" value="<?php echo get_field('modal_mailchimp_id','option');?>">
                 <input type="submit" value="INGRESAR" name="subscribe" id="mc-embedded-subscribe" class="wysija-submit">
 				<span class="thanks-txt"></span>	
         </form>				
@@ -61,11 +62,12 @@
 					    </div> 
 						<span class="expirate-date">
 							<?php 
+							date_default_timezone_set(get_option('timezone_string'));
 							$date_format = __( 'Y-m-d H:i:s' );
 							//I used "Y-m-d H-i-s" instead of "Y-m-d H:i:s"
 							$expiration_date = get_post_meta( get_the_ID(), '_expiration_date', true);
 
-							$dt_end = new DateTime(date_i18n( $date_format, strtotime( $expiration_date ) ));
+							$dt_end = new DateTime(date_i18n( $date_format, strtotime( $expiration_date ) ), new DateTimeZone(get_option('timezone_string')));
 							$remain = $dt_end->diff(new DateTime());
 							?>
 							<div class="col-xs-3">
@@ -136,10 +138,11 @@
 						<span class="expirate-date">
 							<span aria-hidden="true" class="glyphicon glyphicon-time"></span>
 							<?php 
+							date_default_timezone_set(get_option('timezone_string'));
 							$date_format = __( 'Y-m-d H:i:s' );
 							$expiration_date = get_post_meta( get_the_ID(), '_expiration_date', true);
 
-							$dt_end = new DateTime(date_i18n( $date_format, strtotime( $expiration_date ) ));
+							$dt_end = new DateTime(date_i18n( $date_format, strtotime( $expiration_date ) ), new DateTimeZone(get_option('timezone_string')));
 							$remain = $dt_end->diff(new DateTime());
 							echo $remain->d . ' dias';
 							?>
@@ -199,6 +202,7 @@
 	            <form action="/send-suscribe.php" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
 	            		<input type="text" value="" name="FNAME" class="" id="mce-FNAME" placeholder="Nombre">
 	                     <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="nombre@email.com" data-validate="validate(required, email)">
+	                     <input type="hidden" name="idmailchimp" value="<?php echo get_field('modal_mailchimp_id','option');?>">
 	                    <input type="submit" value="REGISTRARME" name="subscribe" id="mc-embedded-subscribe" class="wysija-submit">
 						<span class="thanks-txt"></span>	
 	            </form>						
