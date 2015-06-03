@@ -37,29 +37,30 @@
 					 	<!--div class="description"><?php the_excerpt();?></div-->
 					 	<div class="row price">
 							<?php
-							$regular = get_field('precio_normal_aux');
-							$sales = get_field('precio_rebajado_aux');
+							$regular = get_field('precio_normal_aux',get_the_ID());
+							$sales = get_field('precio_rebajado_aux',get_the_ID());
 							$newprice = $regular - $sales;
 							if($regular > 0){
 								$porcent = (($regular - $sales) *100) /($regular);
 							}else{
 								$porcent = 0;
-							}						
+							}					
+							echo $regular;	
 							 ?>
 							<div class="col-xs-4">
-								<span class="regular"> En Comercio <br><span><?php echo "$".get_field('precio_normal_aux'); ?></span></span>
+								<span class="regular"> En Comercio <br><span><?php echo "$".number_format(get_field('precio_normal_aux',get_the_ID()),0,'.',','); ?></span></span>
 							</div>
 							<div class="col-xs-4">
 								<span class="porcent">Ahorro <br><span><?php echo round($porcent,0)."%";?></span></span>
 							</div>
 							<div class="col-xs-4">
-								<span class="sale">Cupons Up <br><span><?php echo "$".get_field('precio_rebajado_aux');?></span></span>
+								<span class="sale">Cupons Up <br><span><?php echo "$".number_format(get_field('precio_rebajado_aux',get_the_ID()),0,'.',',');?></span></span>
 							</div>														
 					 	</div>
-						<div class="product-rating">
+						<!--div class="product-rating">
 					       <?php //$string = WC_Product::get_rating_html( 5); echo $string;?>
 					       <?php echo do_shortcode('[ratings id="'.get_the_ID().'"]');?>
-					    </div> 
+					    </div--> 
 						<span class="expirate-date">
 							<?php 
 							date_default_timezone_set(get_option('timezone_string'));
@@ -69,13 +70,22 @@
 
 							$dt_end = new DateTime(date_i18n( $date_format, strtotime( $expiration_date ) ), new DateTimeZone(get_option('timezone_string')));
 							$remain = $dt_end->diff(new DateTime());
+							// get all coutn date in days
+							$currentdate = date_i18n( $date_format, strtotime( '11/15-1976' ) );
+							$after1yrdate =  $expiration_date;
+							$diff = (strtotime($after1yrdate) - strtotime($currentdate)) / (60 * 60 * 24);
+							//echo $remain->d . ' dias';
+
 							?>
 							<div class="col-xs-3">
-								<span class="days"> Dias <br><span><?php echo $remain->d ?></span></span>
+								<span class="days"> Dias <br><span><?php echo round($diff); ?></span></span>
 							</div>
 							<div class="col-xs-3">
 								<span class="hours">Horas <br><span><?php echo $remain->h;?></span></span>
-							</div>							
+							</div>	
+							<div class="col-xs-3">
+								<span class="hours">Min <br><span><?php echo $remain->m;?></span></span>
+							</div>														
 						</span>					                	
 					 	<a href="<?php echo get_the_permalink(get_the_ID()); ?>" class="show-offer">Ver Oferta</a>
 					</div>
