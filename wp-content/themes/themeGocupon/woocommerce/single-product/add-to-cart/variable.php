@@ -85,7 +85,11 @@ global $woocommerce, $product, $post;
 				
 				$dt_end = new DateTime(date_i18n( $date_format, strtotime( $expiration_date ) ), new DateTimeZone(get_option('timezone_string')));
 				$remain = $dt_end->diff(new DateTime());
-				echo  '<div class="wrap-expiration"> dias<br> <span class="bg-black day">'.$remain->d.'</span></div>' . ' <div class="wrap-expiration">horas <br><span class="bg-black hour">' .$remain->h.'</span></div>';
+				// get all coutn date in days
+				$currentdate = date_i18n( $date_format, strtotime( '11/15-1976' ) );
+				$after1yrdate =  $expiration_date;
+				$diff = (strtotime($after1yrdate) - strtotime($currentdate)) / (60 * 60 * 24);			
+				echo  '<div class="wrap-expiration"> dias<br> <span class="bg-black day">'.round($diff).'</span></div>' . ' <div class="wrap-expiration">horas <br><span class="bg-black hour">' .$remain->h.'</span></div>' . ' <div class="wrap-expiration">min <br><span class="bg-black hour">' .$remain->m.'</span></div>';
 				?>
 			</span>				
 		</div>

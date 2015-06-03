@@ -129,11 +129,23 @@ else
 								date_default_timezone_set(get_option('timezone_string'));
 								$date_format = __( 'Y-m-d H:i:s' );
 								$expiration_date = get_post_meta( get_the_ID(), '_expiration_date', true);
+
 								$dt_end = new DateTime(date_i18n( $date_format, strtotime( $expiration_date ) ), new DateTimeZone(get_option('timezone_string')));
 								$remain = $dt_end->diff(new DateTime());
-								echo $remain->d . ' dias';
+								// get all coutn date in days
+								$currentdate = date_i18n( $date_format, strtotime( '11/15-1976' ) );
+								$after1yrdate =  $expiration_date;
+								$diff = (strtotime($after1yrdate) - strtotime($currentdate)) / (60 * 60 * 24);
+								//echo $remain->d . ' dias';
+								echo round($diff). ' dias, '.$remain->h .'horas, '.$remain->m .'min.';
+								
 								?>
 							</span>
+							<?php 
+
+
+
+							?>
 						<?php }else{?>
 							<span class="expirate-date">
 							<?php
@@ -142,7 +154,9 @@ else
 							</span>
 						<?php }?>
 						<div class="float-caption">
+						<?php if(!get_field('producto_de_comercio',get_the_ID())){?>
 							<h2><?php the_title();	?></h2>
+							<?php }?>
 						 	<div class="price">
 								<?php if(get_field('producto_de_comercio',get_the_ID())){?>
 									<span class="amount regular"> En Comercio: <span><?php echo "$".get_field('precio_normal_aux',get_the_ID()); ?></span></span>
@@ -165,7 +179,7 @@ else
 						</div>						
 					</div>
 					<?php if(get_field('producto_de_comercio',get_the_ID())){?>
-					<div class="caption"><?php echo get_excerpt(60); ?></div>
+					<div class="caption"><?php the_title();// echo get_excerpt(60); ?></div>
 					<?php }?>
 				</div>
 				<?php echo $divide;?>

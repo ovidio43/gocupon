@@ -34,7 +34,7 @@
 					<img src="<?php echo $med_image_url[0];?>">
 					<div class="caption-product">
 					 	<h1><?php the_title(); ?></h1>
-					 	<div class="description"><?php the_excerpt();?></div>
+					 	<!--div class="description"><?php the_excerpt();?></div-->
 					 	<div class="row price">
 							<?php
 							$regular = get_field('precio_normal_aux');
@@ -144,21 +144,26 @@
 
 							$dt_end = new DateTime(date_i18n( $date_format, strtotime( $expiration_date ) ), new DateTimeZone(get_option('timezone_string')));
 							$remain = $dt_end->diff(new DateTime());
-							echo $remain->d . ' dias';
+							// get all coutn date in days
+							$currentdate = date_i18n( $date_format, strtotime( '11/15-1976' ) );
+							$after1yrdate =  $expiration_date;
+							$diff = (strtotime($after1yrdate) - strtotime($currentdate)) / (60 * 60 * 24);
+							//echo $remain->d . ' dias';
+							echo round($diff). ' dias, '.$remain->h .'horas, '.$remain->m .'min.';
 							?>
 						</span>
 						<div class="float-caption">
-							<h2><?php the_title();?></h2>
+							<!--h2><?php the_title();?></h2-->
 						 	<div class="price">	
-								<span class="amount regular"> Precio en Comercio: <span><?php echo "$".get_field('precio_normal_aux'); ?></span></span>
+								<span class="amount regular"> Precio en Comercio: <span><?php echo "$".number_format(get_field('precio_normal_aux'),2,'.',','); ?></span></span>
 								<span class="amount discount">Promocion: <span><?php echo "%".round($porcent,0);?></span></span>
-								<span class="amount sales">Precio en Cupons Up: <span><?php echo "$".get_field('precio_rebajado_aux');?></span></span>
+								<span class="amount sales">Precio en Cupons Up: <span><?php echo "$".number_format(get_field('precio_rebajado_aux'),2,'.',',');?></span></span>
 						 	</div>
 
 							<a href="<?php echo get_the_permalink(get_the_ID()); ?>" class="show-offer">Ver Oferta</a>
 						</div>						
 					</div>
-					<div class="caption"><?php echo get_excerpt(60); ?></div>
+					<div class="caption"><?php the_title();//echo get_excerpt(60); ?></div>
 				</div>
 				<?php echo $divide;?>
 		    <?php endwhile; ?>

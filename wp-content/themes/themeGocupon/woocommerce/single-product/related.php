@@ -85,7 +85,12 @@ if ( $products->have_posts() ) : ?>
 
 								$dt_end = new DateTime(date_i18n( $date_format, strtotime( $expiration_date ) ));
 								$remain = $dt_end->diff(new DateTime());
-								echo $remain->d . ' dias';
+								// get all coutn date in days
+								$currentdate = date_i18n( $date_format, strtotime( '11/15-1976' ) );
+								$after1yrdate =  $expiration_date;
+								$diff = (strtotime($after1yrdate) - strtotime($currentdate)) / (60 * 60 * 24);
+								//echo $remain->d . ' dias';
+								echo round($diff). ' dias, '.$remain->h .'horas, '.$remain->m .'min.';
 								?>
 							</span>
 						<?php }else{?>
@@ -95,7 +100,7 @@ if ( $products->have_posts() ) : ?>
 							</span>
 						<?php }?>
 						<div class="float-caption">
-							<h2><?php the_title();	?></h2>
+							<!--h2><?php the_title();	?></h2-->
 						 	<div class="price">
 								<?php if(get_field('producto_de_comercio',get_the_ID())){?>
 									<span class="amount regular"> En Comercio: <span><?php echo "$".get_field('precio_normal_aux',get_the_ID()); ?></span></span>
@@ -109,7 +114,7 @@ if ( $products->have_posts() ) : ?>
 							<a href="<?php echo get_the_permalink(get_the_ID()); ?>" class="show-offer">Ver Oferta</a>
 						</div>						
 					</div>
-					<div class="caption"><?php echo get_excerpt(60); ?></div>
+					<div class="caption"><?php the_title();// echo get_excerpt(60); ?></div>
 				</div>
 			<?php endwhile; // end of the loop. ?>
 			<?php wp_reset_query(); ?>	
