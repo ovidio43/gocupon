@@ -45,7 +45,7 @@
 							}else{
 								$porcent = 0;
 							}					
-							echo $regular;	
+	
 							 ?>
 							<div class="col-xs-4">
 								<span class="regular"> En Comercio <br><span><?php echo "$".number_format(get_field('precio_normal_aux',get_the_ID()),0,'.',','); ?></span></span>
