@@ -107,7 +107,7 @@ if ( $products->have_posts() ) : ?>
 									<span class="amount discount">Ahorras: <span><?php echo "%".round($porcent,0);?></span></span>
 									<span class="amount sales">Cupons Up: <span><?php echo "$".get_field('precio_rebajado_aux',get_the_ID());?></span></span>
 								<?php }else {?>
-									<span class="amount regular"><span><?php echo "$".get_post_meta( get_the_ID(), '_regular_price', true); ?></span></span>
+									<span class="amount no-line regular"><span><?php echo "$".get_post_meta( get_the_ID(), '_regular_price', true); ?></span></span>
 								<?php }?>
 						 	</div>
 

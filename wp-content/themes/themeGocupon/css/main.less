@@ -47,6 +47,9 @@ a {
 .single_variation{
 	display: none;
 }
+.single-product .woocommerce-{
+	clear: both;
+}
 .align-right{
 	float: right;
 }
@@ -789,7 +792,7 @@ div.wpb_slider_area .item{
 	.float-caption{
 		position: absolute;
 		height: 100%;
-		width: 300px;
+		width: 285px;
 		top: 0;
 		right: 0;
 		.price{
@@ -813,6 +816,11 @@ div.wpb_slider_area .item{
 				&.regular{
 					span{
 						text-decoration:line-through;
+					}
+					&.no-line{
+						span{
+							text-decoration: none;
+						}
 					}
 				}
 			}
